@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iniciar sesión | Power Code</title>
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos globales -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-body">
+  <!-- Barra superior opcional -->
+  <div class="promo" role="status" aria-live="polite">
+    <span class="track">
+      Power Code · Administra tu entrenamiento, asistencia y pagos desde un solo lugar ·
+    </span>
+  </div> 
+
+  <main class="auth-wrapper">
+    <!-- Panel izquierdo (branding) -->
+    <section class="auth-side">
+      <div class="auth-logo-block">
+        <a href="index.html" class="auth-brand">
+          <img src="img/logo.svg" alt="Power Code Logo" class="auth-logo">
+          <span class="auth-brand-text">POWER CODE</span>
+        </a>
+        <p class="auth-tagline">
+          Conecta tu gimnasio, tus rutinas y tu comunidad en una sola plataforma.
+        </p>
+      </div>
+
+      <ul class="auth-bullets">
+        <li>Control de asistencia y pagos en tiempo real.</li>
+        <li>Rutinas personalizadas y panel para entrenadores.</li>
+        <li>Enfoque social para apoyar a quienes más lo necesitan.</li>
+      </ul>
+
+      <p class="auth-footnote">
+        ¿Eres administrador de un gimnasio? <a href="contact.html">Solicita tu acceso empresarial</a>.
+      </p>
+    </section>
+
+    <!-- Panel derecho (tarjeta login/registro) -->
+    <section class="auth-card">
+      <div class="auth-toggle">
+        <button class="auth-tab active" data-target="login-form">Iniciar sesión</button>
+        <button class="auth-tab" data-target="register-form">Crear cuenta</button>
+      </div>
+
+      <!-- Formulario de login -->
+      <form id="login-form" class="auth-form active" autocomplete="on">
+        <h1 class="auth-title">Bienvenido de vuelta</h1>
+        <p class="auth-subtitle">Ingresa con tus credenciales de Power Code.</p>
+
+        <div class="field-group">
+          <label for="login-email">Correo electrónico</label>
+          <input type="email" id="login-email" placeholder="tucorreo@ejemplo.com" required>
+        </div>
+
+        <div class="field-group">
+          <label for="login-password">Contraseña</label>
+          <input type="password" id="login-password" placeholder="••••••••" required>
+        </div>
+
+        <div class="auth-row">
+          <label class="auth-check">
+            <input type="checkbox">
+            <span>Recordar sesión</span>
+          </label>
+          <a href="#" class="auth-link">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button type="submit" class="btn primary auth-btn">ENTRAR</button>
+
+        <p class="auth-helper">
+          ¿Aún no tienes cuenta? <button type="button" class="auth-inline-link" data-switch="register-form">Crear cuenta</button>
+        </p>
+      </form>
+
+      <!-- Formulario de registro -->
+      <form id="register-form" class="auth-form" autocomplete="on">
+        <h1 class="auth-title">Crea tu cuenta</h1>
+        <p class="auth-subtitle">Regístrate para empezar a usar Power Code.</p>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label for="reg-name">Nombre completo</label>
+            <input type="text" id="reg-name" placeholder="Nombre y apellidos" required>
+          </div>
+        
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="reg-email">Correo electrónico</label>
+          <input type="email" id="reg-email" placeholder="tucorreo@ejemplo.com" required>
+        </div>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label for="reg-password">Contraseña</label>
+            <input type="password" id="reg-password" placeholder="Mínimo 8 caracteres" required>
+          </div>
+          <div class="field-group">
+            <label for="reg-password2">Confirmar contraseña</label>
+            <input type="password" id="reg-password2" placeholder="Repite tu contraseña" required>
+          </div>
+        </div>
+
+        <div class="auth-row">
+          <label class="auth-check">
+            <input type="checkbox" required>
+            <span>Acepto los términos y la política de privacidad</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn primary auth-btn">CREAR CUENTA</button>
+
+        <p class="auth-helper">
+          ¿Ya tienes cuenta? <button type="button" class="auth-inline-link" data-switch="login-form">Iniciar sesión</button>
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <!-- WhatsApp flotante (opcional, mismo que en index) -->
+  <a class="wa" aria-label="WhatsApp" href="https://wa.me/5215555555555" target="_blank" rel="noopener">⌕</a>
+
+  <!-- Script de toggle login/registro (sin backend, solo interfaz) -->
+  <script>
+    const tabs = document.querySelectorAll('.auth-tab');
+    const forms = document.querySelectorAll('.auth-form');
+    const helperSwitches = document.querySelectorAll('.auth-inline-link');
+
+    function showForm(targetId){
+      forms.forEach(form => {
+        form.classList.toggle('active', form.id === targetId);
+      });
+      tabs.forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.target === targetId);
+      });
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        showForm(tab.dataset.target);
+      });
+    });
+
+    helperSwitches.forEach(btn => {
+      btn.addEventListener('click', () => {
+        showForm(btn.dataset.switch);
+      });
+    });
+    function getQueryParams(){
+  const params = {};
+  const qs = window.location.search.substring(1).split('&');
+  qs.forEach(part => {
+    if (!part) return;
+    const [key, value] = part.split('=');
+    params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+  });
+  return params;
+}
+
+const queryParams = getQueryParams();
+const isMembershipFlow = queryParams.flow === 'membership';
+
+
+    // Aquí en el futuro puedes conectar con tu backend / API de Power Code
+   document.getElementById('login-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById('login-email').value.trim();
+
+  // Simulación: guardamos usuario actual en localStorage
+  const user = {
+    email,
+    name: email.split('@')[0] || 'Usuario Power Code'
+  };
+  localStorage.setItem('pc_currentUser', JSON.stringify(user));
+
+  // Si venía del flujo de membresía, lo mandamos a confirmar
+  if (isMembershipFlow) {
+    window.location.href = 'memberships.html';
+  } else {
+    alert('Sesión iniciada (demo). Aquí iría el dashboard real.');
+  }
+});
+document.getElementById('register-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById('reg-name').value.trim();
+  const email = document.getElementById('reg-email').value.trim();
+  const pass1 = document.getElementById('reg-password').value;
+  const pass2 = document.getElementById('reg-password2').value;
+
+  if (pass1 !== pass2) {
+    alert('Las contraseñas no coinciden.');
+    return;
+  }
+
+  // Simulación: registramos al usuario y lo dejamos logueado
+  const user = { name, email };
+  localStorage.setItem('pc_currentUser', JSON.stringify(user));
+
+  if (isMembershipFlow) {
+    window.location.href = 'memberships.html';
+  } else {
+    alert('Cuenta creada (demo). Aquí iría la lógica real de registro.');
+  }
+});
+
+
+  </script>
+</body>
+</html>
