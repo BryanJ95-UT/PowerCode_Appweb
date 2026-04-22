@@ -113,3 +113,9 @@ textarea {
   border: none;
   margin-top: 5px;
 }
+
+/* ===== DESTACAR PLAN ===== */
+
+.card:nth-child(2) {
+  border: 2px solid var(--naranja);
+}

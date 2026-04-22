@@ -1,249 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Elegir membresía | Power Code</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <title>Membresías | Power Code</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <div class="promo">
-    <span class="track">
-      Paso 2 de 3 · Revisa y ajusta la membresía que usarás con Power Code · 
-    </span>
-  </div>
 
+<body>
+
+  <!-- NAVBAR -->
   <header class="nav">
-    <a class="brand" href="index.html">
-      <img src="img/logo.svg" alt="Power Code Logo" class="logo-svg">
-    </a>
+    <div class="brand">
+      <h1>Power Code</h1>
+    </div>
+
     <nav class="menu">
       <a href="index.html">Inicio</a>
+      <a href="rutinas.html">Rutinas</a>
+      <a href="productos.html">Productos</a>
       <a href="gyms.html">Gimnasios</a>
-      <a class="active" href="memberships.html">Membresías</a>
+      <a href="memberships.html">Membresías</a>
+      <a href="login.html">Login</a>
     </nav>
-    <a class="cta" href="login.html">Cuenta</a>
   </header>
 
+  <!-- CONTENIDO -->
   <main class="page">
-    <section class="page-header">
-      <h1>Confirma tu membresía</h1>
-      <p>
-        Revisamos qué gimnasio y plan elegiste. Puedes mantenerlo o modificarlo antes de pasar
-        al pago de prueba.
-      </p>
-    </section>
 
-    <section class="membership-layout">
-      <!-- Columna izquierda: resumen actual -->
-      <div class="membership-current">
-        <h2>Tu selección actual</h2>
-        <p class="membership-note">
-          Esta información viene de lo que seleccionaste en la pantalla de gimnasios.
-        </p>
+    <h2 class="title-section">Membresías</h2>
 
-        <div id="membership-summary" class="membership-summary">
-          <!-- Se llena por JS -->
-        </div>
+    <div class="grid">
+
+      <!-- PLAN BÁSICO -->
+      <div class="card">
+        <h3>Plan Básico</h3>
+        <p>Acceso a rutinas básicas.</p>
+        <p><strong>$150 MXN / mes</strong></p>
+        <button class="btn primary">Elegir plan</button>
       </div>
 
-      <!-- Columna derecha: cambiar selección -->
-      <div class="membership-change">
-        <h2>Ajustar membresía</h2>
-        <p class="membership-note">
-          Si quieres cambiar el gimnasio o el tipo de plan, hazlo aquí antes de continuar.
-        </p>
-
-        <form id="membership-form" class="trainer-form">
-          <div class="field-group">
-            <label for="gym-select">Gimnasio</label>
-            <select id="gym-select" required></select>
-          </div>
-
-          <div class="field-group">
-            <label for="offer-select">Plan / membresía</label>
-            <select id="offer-select" required></select>
-          </div>
-
-          <button type="submit" class="btn primary">
-            Continuar al pago de prueba
-          </button>
-        </form>
+      <!-- PLAN INTERMEDIO -->
+      <div class="card">
+        <h3>Plan Intermedio</h3>
+        <p>Rutinas + seguimiento.</p>
+        <p><strong>$300 MXN / mes</strong></p>
+        <button class="btn primary">Elegir plan</button>
       </div>
-    </section>
+
+      <!-- PLAN PREMIUM -->
+      <div class="card">
+        <h3>Plan Premium</h3>
+        <p>Acceso completo + asesoría.</p>
+        <p><strong>$500 MXN / mes</strong></p>
+        <button class="btn primary">Elegir plan</button>
+      </div>
+
+    </div>
+
   </main>
 
-  <a class="wa" aria-label="WhatsApp" href="https://wa.me/5215555555555" target="_blank" rel="noopener">⌕</a>
-
-  <script>
-    // Mismo catálogo de gyms que en gyms.html (simplificado en front)
-    const GYMS = [
-      {
-        id: 1,
-        name: "Power Code Fitness Centro",
-        city: "Ciudad de México",
-        colonia: "Centro Histórico",
-        cp: "06000",
-        offers: [
-          { name: "Membresía Mensual", price: "$599 MXN" },
-          { name: "Membresía Trimestral", price: "$1,499 MXN" },
-          { name: "Plan Estudiantil", price: "$449 MXN" }
-        ]
-      },
-      {
-        id: 2,
-        name: "Power Code Norte",
-        city: "Monterrey, NL",
-        colonia: "San Nicolás",
-        cp: "66420",
-        offers: [
-          { name: "Membresía Básica", price: "$549 MXN" },
-          { name: "Membresía Plus", price: "$799 MXN" }
-        ]
-      },
-      {
-        id: 3,
-        name: "Power Code Reforma",
-        city: "Puebla, Pue.",
-        colonia: "La Paz",
-        cp: "72160",
-        offers: [
-          { name: "Membresía Mensual", price: "$499 MXN" },
-          { name: "Plan Familiar (2 personas)", price: "$899 MXN" }
-        ]
-      },
-      {
-        id: 4,
-        name: "Power Code Xalapa",
-        city: "Xalapa, Ver.",
-        colonia: "Centro",
-        cp: "91000",
-        offers: [
-          { name: "Membresía Mensual", price: "$459 MXN" },
-          { name: "Membresía Plus + App", price: "$699 MXN" }
-        ]
-      }
-    ];
-
-    const summaryBox = document.getElementById('membership-summary');
-    const gymSelect = document.getElementById('gym-select');
-    const offerSelect = document.getElementById('offer-select');
-    const form = document.getElementById('membership-form');
-
-    // Leemos la elección pendiente (si viene de gyms.html)
-    const pendingRaw = localStorage.getItem('pc_pendingMembership');
-    let pending = null;
-    if (pendingRaw) {
-      pending = JSON.parse(pendingRaw);
-    }
-
-    function populateGymSelect(){
-      gymSelect.innerHTML = '';
-      GYMS.forEach(gym => {
-        const opt = document.createElement('option');
-        opt.value = gym.id;
-        opt.textContent = `${gym.name} · ${gym.city}`;
-        gymSelect.appendChild(opt);
-      });
-
-      if (pending) {
-        gymSelect.value = String(pending.gymId);
-      }
-    }
-
-    function populateOfferSelect(){
-      const gymId = Number(gymSelect.value);
-      const gym = GYMS.find(g => g.id === gymId);
-      offerSelect.innerHTML = '';
-
-      if (!gym) return;
-
-      gym.offers.forEach((offer, index) => {
-        const opt = document.createElement('option');
-        opt.value = index;
-        opt.textContent = `${offer.name} — ${offer.price}`;
-        offerSelect.appendChild(opt);
-      });
-
-      if (pending && gymId === pending.gymId){
-        offerSelect.value = String(pending.offerIndex);
-      }
-    }
-
-    function renderSummary(){
-      const gymId = Number(gymSelect.value);
-      const offerIndex = Number(offerSelect.value);
-      const gym = GYMS.find(g => g.id === gymId);
-      if (!gym) return;
-      const offer = gym.offers[offerIndex];
-
-      summaryBox.innerHTML = `
-        <div class="membership-summary-card">
-          <h3>${gym.name}</h3>
-          <p class="gym-location">
-            ${gym.city} · ${gym.colonia} · CP ${gym.cp}
-          </p>
-          <hr>
-          <p class="membership-line">
-            <span>Plan seleccionado:</span>
-            <strong>${offer.name} (${offer.price})</strong>
-          </p>
-          <p class="membership-line">
-            <span>Tipo de cliente:</span>
-            <strong>Usuario Power Code (demo)</strong>
-          </p>
-          <p class="membership-line">
-            <span>Facturación:</span>
-            <strong>Mensual renovable (simulación)</strong>
-          </p>
-        </div>
-      `;
-    }
-
-    gymSelect.addEventListener('change', () => {
-      populateOfferSelect();
-      renderSummary();
-    });
-
-    offerSelect.addEventListener('change', () => {
-      renderSummary();
-    });
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const gymId = Number(gymSelect.value);
-      const offerIndex = Number(offerSelect.value);
-      const gym = GYMS.find(g => g.id === gymId);
-      const offer = gym.offers[offerIndex];
-
-      const selected = {
-        gymId,
-        offerIndex,
-        gymName: gym.name,
-        city: gym.city,
-        colonia: gym.colonia,
-        cp: gym.cp,
-        offerName: offer.name,
-        price: offer.price
-      };
-
-      // Guardamos la membresía final seleccionada
-      localStorage.setItem('pc_selectedMembership', JSON.stringify(selected));
-
-      // Paso siguiente: pago de prueba
-      window.location.href = 'payments.html';
-    });
-
-    // Inicialización
-    populateGymSelect();
-    populateOfferSelect();
-    renderSummary();
-  </script>
 </body>
 </html>
