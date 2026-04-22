@@ -2,39 +2,66 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de Usuarios | Power Code</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Registro | Power Code</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <header>
-    <div class="logo">
-      <img src="assets/logo.png" alt="Logo Power Code">
+
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="brand">
       <h1>Power Code</h1>
     </div>
-    <nav>
+
+    <nav class="menu">
       <a href="index.html">Inicio</a>
       <a href="rutinas.html">Rutinas</a>
       <a href="productos.html">Productos</a>
-      <a href="registro.html">Usuarios</a>
-      <a href="apoyos.html">Apoyos</a>
-      <a href="contacto.html">Contacto</a>
+      <a href="login.html">Login</a>
     </nav>
   </header>
 
-  <section class="registro">
-    <h2>Registrar Nuevo Usuario</h2>
-    <form class="formulario">
-      <label>Nombre:</label>
-      <input type="text" placeholder="Ingresa tu nombre">
-      <label>Correo:</label>
-      <input type="email" placeholder="correo@ejemplo.com">
-      <label>Contraseña:</label>
-      <input type="password" placeholder="*******">
-      <button class="btn-primario">Registrar</button>
-    </form>
-  </section>
+  <!-- CONTENIDO -->
+  <main class="page">
 
-  <footer><p>© 2025 Power Code</p></footer>
+    <div class="card" style="max-width: 450px; margin: auto;">
+
+      <h2 class="title-section">Crear Cuenta</h2>
+
+      <form>
+
+        <label>Nombre</label>
+        <input type="text" placeholder="Tu nombre">
+
+        <br><br>
+
+        <label>Correo electrónico</label>
+        <input type="email" placeholder="correo@ejemplo.com">
+
+        <br><br>
+
+        <label>Contraseña</label>
+        <input type="password" placeholder="****">
+
+        <br><br>
+
+        <label>Confirmar contraseña</label>
+        <input type="password" placeholder="****">
+
+        <br><br>
+
+        <button class="btn primary" type="submit">Registrarse</button>
+
+      </form>
+
+      <br>
+
+      <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+
+    </div>
+
+  </main>
+
 </body>
 </html>
