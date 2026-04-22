@@ -1,0 +1,87 @@
+/* ===== VARIABLES ===== */
+:root {
+  --gris-fondo: #2B2B2B;
+  --gris-oscuro: #1E1E1E;
+  --naranja: #F75C03;
+  --blanco: #FFFFFF;
+}
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--gris-fondo);
+  color: var(--blanco);
+}
+
+/* ===== NAVBAR ===== */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--gris-oscuro);
+  padding: 15px 40px;
+}
+
+.brand h1 {
+  color: var(--naranja);
+}
+
+.menu a {
+  color: var(--blanco);
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.menu a:hover {
+  color: var(--naranja);
+}
+
+/* ===== CONTENIDO ===== */
+.page {
+  padding: 30px;
+}
+
+/* ===== TARJETAS ===== */
+.card {
+  background: var(--gris-oscuro);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px rgba(247,92,3,0.5);
+}
+
+/* ===== TITULOS ===== */
+.title-section {
+  color: var(--naranja);
+  margin-bottom: 10px;
+}
+
+/* ===== BOTONES ===== */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: var(--naranja);
+  color: white;
+}
+
+.btn.primary:hover {
+  background: #ff7b2d;
+}
