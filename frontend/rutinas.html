@@ -1,198 +1,61 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
   <title>Rutinas | Power Code</title>
-
-  <!-- Fuentes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Estilos -->
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <!-- Barra roja: anuncio app móvil -->
-  <div class="promo" role="status" aria-live="polite">
-    <span class="track">
-      Diseña tu entrenamiento ideal con Power Code · Elige tu enfoque y sigue las rutinas en video · 
-    </span>
-  </div>
 
-  <!-- Navbar -->
+<body>
+
+  <!-- NAVBAR -->
   <header class="nav">
-    <a class="brand" href="index.html">
-      <img src="img/logo.svg" alt="Power Code Logo" class="logo-svg">
-    </a>
+    <div class="brand">
+      <h1>Power Code</h1>
+    </div>
+
     <nav class="menu">
       <a href="index.html">Inicio</a>
-      <a class="active" href="routines.html">Rutinas</a>
-      <a href="#conocenos">Conócenos</a>
+      <a href="rutinas.html">Rutinas</a>
+      <a href="productos.html">Productos</a>
+      <a href="login.html">Login</a>
     </nav>
-    <a class="cta" href="#unete">ÚNETE AHORA →</a>
   </header>
 
-  <!-- Contenido principal -->
+  <!-- CONTENIDO -->
   <main class="page">
-    <section class="page-header">
-      <h1>Rutinas guiadas en video</h1>
-      <p>
-        Selecciona el tipo de entrenamiento que quieres trabajar hoy y visualiza rutinas 
-        guiadas en video: fuerza, cardio, HIIT o movilidad.
-      </p>
-    </section>
 
-    <!-- Filtros: tipo de entrenamiento -->
-    <section class="routine-filters">
-      <h2>Elige tu tipo de entrenamiento</h2>
-      <div class="pill-group" role="tablist" aria-label="Tipos de entrenamiento">
-        <button class="pill active" data-type="fuerza" role="tab">Fuerza</button>
-        <button class="pill" data-type="cardio" role="tab">Cardio</button>
-        <button class="pill" data-type="hiit" role="tab">HIIT</button>
-        <button class="pill" data-type="movilidad" role="tab">Movilidad</button>
+    <h2 class="title-section">Rutinas de Entrenamiento</h2>
+
+    <div class="grid">
+
+      <!-- RUTINA 1 -->
+      <div class="card">
+        <h3>Rutina Principiante</h3>
+        <p>Ejercicios básicos para iniciar en el gimnasio.</p>
+        <p><strong>Nivel:</strong> Fácil</p>
+        <button class="btn primary">Ver rutina</button>
       </div>
-    </section>
 
-    <!-- Grid de videos -->
-    <section class="routine-grid" aria-live="polite">
-      <!-- Fuerza -->
-      <article class="routine-card" data-type="fuerza">
-        <h3>Fuerza full body principiante</h3>
-        <p>Rutina general para trabajar todo el cuerpo con mancuernas ligeras.</p>
-        <div class="video-wrapper">
-          <iframe 
-            src="https://www.youtube.com/embed/VIDEO_ID_FUERZA1" 
-            title="Fuerza full body principiante"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </article>
+      <!-- RUTINA 2 -->
+      <div class="card">
+        <h3>Rutina Intermedia</h3>
+        <p>Entrenamiento para mejorar fuerza y resistencia.</p>
+        <p><strong>Nivel:</strong> Medio</p>
+        <button class="btn primary">Ver rutina</button>
+      </div>
 
-      <article class="routine-card" data-type="fuerza">
-        <h3>Push / Pull (tren superior)</h3>
-        <p>Entrenamiento dividido en empuje y jalón para pecho, espalda y hombros.</p>
-        <div class="video-wrapper">
-          <iframe 
-            src="https://www.youtube.com/embed/VIDEO_ID_FUERZA2" 
-            title="Push Pull tren superior"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </article>
+      <!-- RUTINA 3 -->
+      <div class="card">
+        <h3>Rutina Avanzada</h3>
+        <p>Alta intensidad para resultados rápidos.</p>
+        <p><strong>Nivel:</strong> Difícil</p>
+        <button class="btn primary">Ver rutina</button>
+      </div>
 
-      <!-- Cardio -->
-      <article class="routine-card hidden" data-type="cardio">
-        <h3>Cardio bajo impacto 20 min</h3>
-        <p>Ideal para principiantes o personas con sensibilidad en articulaciones.</p>
-        <div class="video-wrapper">
-          <iframe 
-            src="https://www.youtube.com/embed/VIDEO_ID_CARDIO1" 
-            title="Cardio bajo impacto"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </article>
+    </div>
 
-      <article class="routine-card hidden" data-type="cardio">
-        <h3>Cardio quema grasa 30 min</h3>
-        <p>Sesión continua para elevar la frecuencia cardiaca y gastar calorías.</p>
-        <div class="video-wrapper">
-          <iframe 
-            src="https://www.youtube.com/embed/VIDEO_ID_CARDIO2" 
-            title="Cardio quema grasa"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </article>
-
-      <!-- HIIT -->
-      <article class="routine-card hidden" data-type="hiit">
-        <h3>HIIT 15 min sin equipo</h3>
-        <p>Intervalos de alta intensidad usando solo peso corporal.</p>
-        <div class="video-wrapper">
-          <iframe 
-            src="https://www.youtube.com/embed/VIDEO_ID_HIIT1" 
-            title="HIIT 15 min"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </article>
-
-      <article class="routine-card hidden" data-type="hiit">
-        <h3>HIIT avanzado 25 min</h3>
-        <p>Entrenamiento exigente para usuarios con experiencia previa.</p>
-        <div class="video-wrapper">
-          <iframe 
-            src="https://www.youtube.com/embed/VIDEO_ID_HIIT2" 
-            title="HIIT avanzado"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </article>
-
-      <!-- Movilidad -->
-      <article class="routine-card hidden" data-type="movilidad">
-        <h3>Movilidad para todo el cuerpo</h3>
-        <p>Secuencia para mejorar rangos de movimiento y prevenir lesiones.</p>
-        <div class="video-wrapper">
-          <iframe 
-            src="https://www.youtube.com/embed/VIDEO_ID_MOV1" 
-            title="Movilidad full body"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </article>
-
-      <article class="routine-card hidden" data-type="movilidad">
-        <h3>Estiramientos post-entrenamiento</h3>
-        <p>Rutina suave para después del gimnasio o actividad intensa.</p>
-        <div class="video-wrapper">
-          <iframe 
-            src="https://www.youtube.com/embed/VIDEO_ID_MOV2" 
-            title="Estiramientos post entrenamiento"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </article>
-    </section>
   </main>
 
-  <!-- WhatsApp flotante (puedes mantener el mismo número que en index) -->
-  <a class="wa" aria-label="WhatsApp" href="https://wa.me/5215555555555" target="_blank" rel="noopener">⌕</a>
-
-  <!-- Script básico para cambiar de tipo de entrenamiento -->
-  <script>
-    const pills = document.querySelectorAll('.pill');
-    const cards = document.querySelectorAll('.routine-card');
-
-    pills.forEach(pill => {
-      pill.addEventListener('click', () => {
-        const type = pill.dataset.type;
-
-        // Actualizar estado visual del filtro
-        pills.forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
-
-        // Mostrar/ocultar tarjetas según tipo
-        cards.forEach(card => {
-          if (card.dataset.type === type) {
-            card.classList.remove('hidden');
-          } else {
-            card.classList.add('hidden');
-          }
-        });
-      });
-    });
-  </script>
 </body>
 </html>

@@ -2,44 +2,60 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Productos | Power Code</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <header>
-    <div class="logo">
-      <img src="assets/logo.png" alt="Logo Power Code">
+
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="brand">
       <h1>Power Code</h1>
     </div>
-    <nav>
+
+    <nav class="menu">
       <a href="index.html">Inicio</a>
       <a href="rutinas.html">Rutinas</a>
       <a href="productos.html">Productos</a>
-      <a href="registro.html">Usuarios</a>
-      <a href="apoyos.html">Apoyos</a>
-      <a href="contacto.html">Contacto</a>
+      <a href="login.html">Login</a>
     </nav>
   </header>
 
-  <section class="productos">
-    <h2>Compra Productos Deportivos</h2>
-    <div class="grid-productos">
-      <div class="producto">
-        <img src="assets/img1.jpg" alt="Proteína">
-        <h3>Proteína Whey</h3>
-        <p>$850 MXN</p>
-        <button class="btn-primario">Agregar al carrito</button>
-      </div>
-      <div class="producto">
-        <img src="assets/img2.jpg" alt="Guantes">
-        <h3>Guantes Power Grip</h3>
-        <p>$299 MXN</p>
-        <button class="btn-primario">Agregar al carrito</button>
-      </div>
-    </div>
-  </section>
+  <!-- CONTENIDO -->
+  <main class="page">
 
-  <footer><p>© 2025 Power Code</p></footer>
+    <h2 class="title-section">Productos</h2>
+
+    <div class="grid">
+
+      <!-- PRODUCTO 1 -->
+      <div class="card">
+        <h3>Proteína Whey</h3>
+        <p>Suplemento para aumento de masa muscular.</p>
+        <p><strong>$800 MXN</strong></p>
+        <button class="btn primary">Comprar</button>
+      </div>
+
+      <!-- PRODUCTO 2 -->
+      <div class="card">
+        <h3>Creatina</h3>
+        <p>Mejora el rendimiento físico.</p>
+        <p><strong>$500 MXN</strong></p>
+        <button class="btn primary">Comprar</button>
+      </div>
+
+      <!-- PRODUCTO 3 -->
+      <div class="card">
+        <h3>Guantes Gym</h3>
+        <p>Mayor agarre y protección.</p>
+        <p><strong>$250 MXN</strong></p>
+        <button class="btn primary">Comprar</button>
+      </div>
+
+    </div>
+
+  </main>
+
 </body>
 </html>

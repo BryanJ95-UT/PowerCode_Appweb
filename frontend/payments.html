@@ -1,159 +1,79 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pago de membresía | Power Code</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <title>Pagos | Power Code</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <div class="promo">
-    <span class="track">
-      Paso 3 de 3 · Simulación de pago de membresía · No se realiza ningún cobro real · 
-    </span>
-  </div>
 
+<body>
+
+  <!-- NAVBAR -->
   <header class="nav">
-    <a class="brand" href="index.html">
-      <img src="img/logo.svg" alt="Power Code Logo" class="logo-svg">
-    </a>
+    <div class="brand">
+      <h1>Power Code</h1>
+    </div>
+
     <nav class="menu">
       <a href="index.html">Inicio</a>
+      <a href="rutinas.html">Rutinas</a>
+      <a href="productos.html">Productos</a>
       <a href="gyms.html">Gimnasios</a>
       <a href="memberships.html">Membresías</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="login.html">Login</a>
     </nav>
-    <a class="cta" href="login.html">Cuenta</a>
   </header>
 
+  <!-- CONTENIDO -->
   <main class="page">
-    <section class="page-header">
-      <h1>Pago de prueba</h1>
-      <p>
-        Este flujo simula un pago real para tu membresía, pero no se realiza ningún cargo.
-        Es únicamente demostrativo para el proyecto Power Code.
-      </p>
-    </section>
 
-    <section class="payment-layout">
-      <!-- Resumen de compra -->
-      <div class="payment-summary" id="payment-summary"></div>
+    <div class="grid">
 
-      <!-- Formulario de pago -->
-      <form id="payment-form" class="trainer-form">
-        <h2>Datos de tarjeta (demo)</h2>
+      <!-- RESUMEN DEL PLAN -->
+      <div class="card">
+        <h2 class="title-section">Resumen de compra</h2>
+        <p><strong>Plan:</strong> Premium</p>
+        <p><strong>Precio:</strong> $500 MXN / mes</p>
+        <p><strong>Acceso:</strong> Completo</p>
+      </div>
 
-        <div class="field-group">
-          <label for="card-name">Nombre en la tarjeta</label>
-          <input type="text" id="card-name" placeholder="Como aparece en la tarjeta" required>
-        </div>
+      <!-- FORMULARIO DE PAGO -->
+      <div class="card">
 
-        <div class="field-group">
-          <label for="card-number">Número de tarjeta</label>
-          <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxlength="19" required>
-        </div>
+        <h2 class="title-section">Datos de pago</h2>
 
-        <div class="field-row">
-          <div class="field-group">
-            <label for="card-exp">Vencimiento</label>
-            <input type="text" id="card-exp" placeholder="MM/AA" maxlength="5" required>
-          </div>
-          <div class="field-group">
-            <label for="card-cvv">CVV</label>
-            <input type="password" id="card-cvv" placeholder="000" maxlength="4" required>
-          </div>
-        </div>
+        <form>
 
-        <div class="auth-row">
-          <label class="auth-check">
-            <input type="checkbox" required>
-            <span>Entiendo que este pago es solo una simulación para el proyecto.</span>
-          </label>
-        </div>
+          <label>Nombre en la tarjeta</label>
+          <input type="text" placeholder="Nombre completo">
 
-        <button type="submit" class="btn primary">Finalizar simulación de pago</button>
-      </form>
-    </section>
+          <br><br>
+
+          <label>Número de tarjeta</label>
+          <input type="text" placeholder="1234 5678 9012 3456">
+
+          <br><br>
+
+          <label>Fecha de expiración</label>
+          <input type="text" placeholder="MM/AA">
+
+          <br><br>
+
+          <label>CVV</label>
+          <input type="text" placeholder="123">
+
+          <br><br>
+
+          <button class="btn primary" type="submit">Pagar</button>
+
+        </form>
+
+      </div>
+
+    </div>
+
   </main>
 
-  <a class="wa" aria-label="WhatsApp" href="https://wa.me/5215555555555" target="_blank" rel="noopener">⌕</a>
-
-  <script>
-    const summaryBox = document.getElementById('payment-summary');
-
-    const membershipRaw = localStorage.getItem('pc_selectedMembership');
-    const userRaw = localStorage.getItem('pc_currentUser');
-
-    let membership = null;
-    let user = null;
-
-    if (membershipRaw) {
-      membership = JSON.parse(membershipRaw);
-    }
-    if (userRaw) {
-      user = JSON.parse(userRaw);
-    }
-
-    if (!membership){
-      summaryBox.innerHTML = "<p>No hay membresía seleccionada. Regresa a la sección de gimnasios.</p>";
-    } else {
-      summaryBox.innerHTML = `
-        <div class="membership-summary-card">
-          <h2>Resumen de tu membresía</h2>
-          <p class="membership-line">
-            <span>Gimnasio:</span>
-            <strong>${membership.gymName}</strong>
-          </p>
-          <p class="membership-line">
-            <span>Ubicación:</span>
-            <strong>${membership.city}, ${membership.colonia} · CP ${membership.cp}</strong>
-          </p>
-          <p class="membership-line">
-            <span>Plan:</span>
-            <strong>${membership.offerName}</strong>
-          </p>
-          <p class="membership-line">
-            <span>Precio:</span>
-            <strong>${membership.price}</strong>
-          </p>
-          <p class="membership-line">
-            <span>Usuario:</span>
-            <strong>${user ? user.name + " (" + user.email + ")" : "No autenticado"}</strong>
-          </p>
-        </div>
-      `;
-    }
-
-    const form = document.getElementById('payment-form');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      // Aquí podrías validar formato de tarjeta si quisieras, pero es demo
-      alert('Pago de prueba realizado con éxito. Tu membresía ha quedado activa (simulación).');
-
-      // Marcamos en localStorage que el usuario tiene una membresía activa
-      if (membership && user) {
-        const active = {
-          ...membership,
-          userEmail: user.email,
-          activatedAt: new Date().toISOString()
-        };
-        localStorage.setItem('pc_activeMembership', JSON.stringify(active));
-      }
-
-      // "Sesión iniciada automática": nos aseguramos que exista pc_currentUser (ya debe existir por el flujo)
-      if (!user) {
-        const fakeUser = { name: 'Usuario Power Code', email: 'demo@powercode.mx' };
-        localStorage.setItem('pc_currentUser', JSON.stringify(fakeUser));
-      }
-
-      // Redirigimos a una página de inicio / dashboard (por ahora, index)
-      window.location.href = 'index.html';
-    });
-  </script>
 </body>
 </html>
