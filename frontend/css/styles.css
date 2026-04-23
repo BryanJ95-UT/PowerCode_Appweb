@@ -648,3 +648,22 @@ body {
   background: #101116;
   border-top-color: #24252b;
 }
+
+.welcome-user {
+  color: #ff5f0f;
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+
+.logout-link {
+  border: 0;
+  background: transparent;
+  color: #d8d8df;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.logout-link:hover {
+  color: #ff5f0f;
+}

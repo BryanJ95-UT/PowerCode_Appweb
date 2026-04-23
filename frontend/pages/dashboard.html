@@ -1,13 +1,55 @@
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Correo</th>
-      <th>Teléfono</th>
-      <th>Dirección</th>
-      <th>Membresía</th>
-    </tr>
-  </thead>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | Power Code</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+  <header class="dash-header">
+    <a class="dash-brand" href="../index.html">
+      <img src="../img/logo.svg" alt="Power Code">
+      <span>Power Code</span>
+    </a>
+
+    <nav class="dash-actions">
+      <a href="../index.html">Inicio</a>
+      <button id="logoutBtn" type="button">Cerrar sesion</button>
+    </nav>
+  </header>
+
+  <main class="dash-shell">
+    <section class="dash-hero">
+      <div>
+        <p class="dash-kicker" id="roleLabel">Panel</p>
+        <h1 id="welcomeTitle">Bienvenido</h1>
+        <p id="welcomeText">Consulta tu informacion y administra tus actividades dentro de Power Code.</p>
+      </div>
+      <div class="dash-user-card">
+        <span>Sesion activa</span>
+        <strong id="userEmail">correo@powercode.mx</strong>
+      </div>
+    </section>
+
+    <section class="dash-grid" id="summaryCards"></section>
+
+    <section class="dash-panel">
+      <div class="panel-head">
+        <div>
+          <p class="dash-kicker" id="panelKicker">Informacion</p>
+          <h2 id="panelTitle">Mi panel</h2>
+        </div>
+        <button class="refresh-btn" id="refreshBtn" type="button">Actualizar</button>
+      </div>
+
+      <div id="dashboardContent" class="panel-content"></div>
+    </section>
+  </main>
+
   <script src="../js/dashboard.js"></script>
-  <tbody id="tabla-clientes"></tbody>
-</table>
+</body>
+</html>

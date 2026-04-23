@@ -1,64 +1,30 @@
-document.getElementById("registerForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
+const usuario = JSON.parse(localStorage.getItem("usuario") || "null");
+const cta = document.querySelector(".cta");
+const menu = document.querySelector(".menu");
+const heroCopy = document.querySelector(".hero-copy");
 
-  const data = {
-    nombre: document.getElementById("nombre").value,
-    correo: document.getElementById("correo").value,
-    password: document.getElementById("password").value
-  };
-
-  try {
-    const res = await fetch("http://localhost:3000/api/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    });
-
-    const result = await res.json();
-
-    console.log(result);
-    alert(result.message);
-
-  } catch (error) {
-    console.error(error);
-    alert("Error conectando con el servidor");
+if (usuario) {
+  if (cta) {
+    cta.textContent = "MI PANEL ->";
+    cta.href = "./pages/dashboard.html";
   }
-});
-document.getElementById("loginForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
 
-  const data = {
-    correo: document.getElementById("correo").value,
-    password: document.getElementById("password").value
-  };
-
-  try {
-    const res = await fetch("http://localhost:3000/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
+  if (menu && !document.querySelector(".logout-link")) {
+    const logout = document.createElement("button");
+    logout.type = "button";
+    logout.className = "logout-link";
+    logout.textContent = "Cerrar sesion";
+    logout.addEventListener("click", () => {
+      localStorage.removeItem("usuario");
+      window.location.href = "./index.html";
     });
-
-    const result = await res.json();
-
-    if (res.ok) {
-      alert(result.message);
-
-      // guardar usuario (opcional)
-      localStorage.setItem("usuario", JSON.stringify(result.usuario));
-
-      // redirigir
-      window.location.href = "index.html";
-    } else {
-      alert(result.message);
-    }
-
-  } catch (error) {
-    console.error(error);
-    alert("Error conectando con el servidor");
+    menu.appendChild(logout);
   }
-});
+
+  if (heroCopy && !document.querySelector(".welcome-user")) {
+    const welcome = document.createElement("p");
+    welcome.className = "welcome-user";
+    welcome.textContent = `Bienvenido, ${usuario.nombre}.`;
+    heroCopy.prepend(welcome);
+  }
+}

@@ -21,6 +21,11 @@ switchButtons.forEach((button) => {
   button.addEventListener("click", () => showForm(button.dataset.switch));
 });
 
+if (new URLSearchParams(window.location.search).get("confirmada") === "1") {
+  alert("Cuenta confirmada correctamente. Ya puedes iniciar sesion.");
+  showForm("loginForm");
+}
+
 document.getElementById("loginForm")?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -42,7 +47,7 @@ document.getElementById("loginForm")?.addEventListener("submit", async (event) =
     }
 
     localStorage.setItem("usuario", JSON.stringify(result.usuario));
-    window.location.href = "./dashboard.html";
+    window.location.href = "../index.html";
   } catch (error) {
     console.error(error);
     alert("Error conectando con el servidor");
@@ -76,7 +81,7 @@ document.getElementById("registerForm")?.addEventListener("submit", async (event
       return;
     }
 
-    alert(result.message || "Usuario registrado correctamente");
+    alert(result.message || "Usuario registrado. Revisa tu correo para confirmar la cuenta.");
     showForm("loginForm");
   } catch (error) {
     console.error(error);
