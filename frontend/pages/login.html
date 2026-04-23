@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iniciar sesion | Power Code</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="auth-body">
+  <div class="promo" role="status" aria-live="polite">
+    <span class="track">
+      Power Code - Administra tu entrenamiento, asistencia y pagos desde un solo lugar.
+    </span>
+  </div>
+
+  <main class="auth-wrapper">
+    <section class="auth-side">
+      <div class="auth-logo-block">
+        <a href="../index.html" class="auth-brand">
+          <img src="../img/logo.svg" alt="Power Code Logo" class="auth-logo">
+          <span class="auth-brand-text">POWER CODE</span>
+        </a>
+        <p class="auth-tagline">
+          Conecta tu gimnasio, tus rutinas y tu comunidad en una sola plataforma.
+        </p>
+      </div>
+
+      <ul class="auth-bullets">
+        <li>Control de asistencia y pagos en tiempo real.</li>
+        <li>Rutinas personalizadas y panel para entrenadores.</li>
+        <li>Enfoque social para apoyar a quienes mas lo necesitan.</li>
+      </ul>
+
+      <p class="auth-footnote">
+        Eres administrador de un gimnasio? <a href="./contact.html">Solicita tu acceso empresarial</a>.
+      </p>
+    </section>
+
+    <section class="auth-card">
+      <div class="auth-toggle">
+        <button class="auth-tab active" type="button" data-target="loginForm">Iniciar sesion</button>
+        <button class="auth-tab" type="button" data-target="registerForm">Crear cuenta</button>
+      </div>
+
+      <form id="loginForm" class="auth-form active" autocomplete="on">
+        <h1 class="auth-title">Bienvenido de vuelta</h1>
+        <p class="auth-subtitle">Ingresa con tus credenciales de Power Code.</p>
+
+        <div class="field-group">
+          <label for="correo">Correo electronico</label>
+          <input type="email" name="correo" id="correo" placeholder="tucorreo@ejemplo.com" required>
+        </div>
+
+        <div class="field-group">
+          <label for="password">Contrasena</label>
+          <input type="password" name="password" id="password" placeholder="********" required>
+        </div>
+
+        <div class="auth-row">
+          <label class="auth-check">
+            <input type="checkbox" name="remember">
+            <span>Recordar sesion</span>
+          </label>
+          <a href="#" class="auth-link">Olvidaste tu contrasena?</a>
+        </div>
+
+        <button type="submit" class="btn primary auth-btn">ENTRAR</button>
+
+        <p class="auth-helper">
+          Aun no tienes cuenta?
+          <button type="button" class="auth-inline-link" data-switch="registerForm">Crear cuenta</button>
+        </p>
+      </form>
+
+      <form id="registerForm" class="auth-form" autocomplete="on">
+        <h1 class="auth-title">Crea tu cuenta</h1>
+        <p class="auth-subtitle">Registrate para empezar a usar Power Code.</p>
+
+        <div class="field-group">
+          <label for="reg-nombre">Nombre completo</label>
+          <input type="text" name="nombre" id="reg-nombre" placeholder="Nombre y apellidos" required>
+        </div>
+
+        <div class="field-group">
+          <label for="reg-correo">Correo electronico</label>
+          <input type="email" name="correo" id="reg-correo" placeholder="tucorreo@ejemplo.com" required>
+        </div>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label for="reg-password">Contrasena</label>
+            <input type="password" name="password" id="reg-password" placeholder="Minimo 8 caracteres" required>
+          </div>
+          <div class="field-group">
+            <label for="reg-password2">Confirmar contrasena</label>
+            <input type="password" id="reg-password2" placeholder="Repite tu contrasena" required>
+          </div>
+        </div>
+
+        <div class="auth-row">
+          <label class="auth-check">
+            <input type="checkbox" required>
+            <span>Acepto los terminos y la politica de privacidad</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn primary auth-btn">CREAR CUENTA</button>
+
+        <p class="auth-helper">
+          Ya tienes cuenta?
+          <button type="button" class="auth-inline-link" data-switch="loginForm">Iniciar sesion</button>
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <a class="wa" aria-label="WhatsApp" href="https://wa.me/5215555555" target="_blank" rel="noopener">?</a>
+
+  <script src="../js/login.js"></script>
+</body>
+</html>

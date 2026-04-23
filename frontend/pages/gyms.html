@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gimnasios | Power Code</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="nav">
+    <a class="brand" href="index.html">
+      <img src="../../assets/img/logo.svg" alt="Power Code Logo" class="logo-svg">
+    </a>
+    <nav class="menu">
+      <a href="index.html">Inicio</a>
+      <a class="active" href="gyms.html">Gimnasios</a>
+      <a href="memberships.html">Membresías</a>
+      <a href="support.html">Soporte</a>
+      <a href="contact.html">Contacto</a>
+    </nav>
+    <a href="../auth/login.php" class="cta">INGRESAR →</a>
+  </header>
+
+  <!-- Encabezado compacto -->
+  <section class="page-header">
+    <h1>Gimnasios</h1>
+    <p>Busca y explora gimnasios disponibles en tu zona</p>
+  </section>
+
+  <!-- Buscador -->
+  <section class="gyms-search">
+    <div class="search-row">
+      <div class="search-group">
+        <label class="search-label" for="nombre">Nombre del gimnasio</label>
+        <input class="search-input" id="nombre" type="text" placeholder="Ej. Power Gym">
+      </div>
+      <div class="search-group">
+        <label class="search-label" for="ubicacion">Ubicación</label>
+        <input class="search-input" id="ubicacion" type="text" placeholder="Ej. Ciudad de México">
+      </div>
+      <div class="search-actions">
+        <button class="btn primary search-button">Buscar</button>
+        <button class="btn secondary search-reset">Limpiar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Layout mapa + lista -->
+  <section class="gyms-layout">
+    <!-- Mapa -->
+    <div class="gym-map">
+      <h2>Mapa</h2>
+      <p class="map-caption">Ubicación de gimnasios registrados</p>
+      <div class="map-frame-wrapper">
+        <iframe id="gym-map-frame" src="https://maps.google.com/maps?q=gym&output=embed"></iframe>
+      </div>
+    </div>
+
+    <!-- Lista -->
+    <div class="gym-list">
+      <div class="gym-list-head">
+        <h2>Lista de gimnasios</h2>
+        <p class="gyms-count">3 gimnasios encontrados</p>
+      </div>
+
+      <!-- Tarjeta -->
+      <div class="gym-card">
+        <div class="gym-header-line">
+          <h3>Power Gym</h3>
+          <span class="badge-cp">CP 12345</span>
+        </div>
+        <p class="gym-location">Ciudad de México</p>
+        <p class="gym-description">Gimnasio equipado con pesas, cardio y entrenadores certificados.</p>
+        <div class="gym-tags">
+          <span class="tag">Pesas</span>
+          <span class="tag">Cardio</span>
+          <span class="tag">Entrenadores</span>
+        </div>
+        <div class="gym-actions">
+          <a class="gym-link" href="#">Ver detalles</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Barra de información -->
+  <section class="info-bar">
+    <div class="info-bar-inner">
+      <span class="info-item strong">Power Code Web · Plataforma de gestión para gimnasios</span>
+      <span class="info-item">Funcionalidades: rutinas, asistencia, pagos, membresías y panel para entrenadores.</span>
+      <span class="info-item">Ideal para gimnasios públicos, privados y comunitarios.</span>
+      <span class="info-item">Soporte: contacto@powercode.mx</span>
+    </div>
+  </section>
+
+  <!-- WhatsApp flotante -->
+  <a class="wa" href="https://wa.me/5215555555555" target="_blank" rel="noopener">⌕</a>
+</body>
+</html>
