@@ -59,6 +59,8 @@ document.getElementById("registerForm")?.addEventListener("submit", async (event
 
   const nombre = document.getElementById("reg-nombre").value;
   const correo = document.getElementById("reg-correo").value;
+  const id_rol = document.getElementById("reg-rol").value;
+  const especialidad = document.getElementById("reg-especialidad").value;
   const password = document.getElementById("reg-password").value;
   const confirmPassword = document.getElementById("reg-password2").value;
 
@@ -71,7 +73,14 @@ document.getElementById("registerForm")?.addEventListener("submit", async (event
     const response = await fetch(`${API_URL}/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nombre, correo, password }),
+      body: JSON.stringify({
+        nombre,
+        correo,
+        password,
+        id_rol,
+        especialidad: id_rol === "3" ? especialidad : undefined,
+        admin_code: id_rol === "1" ? especialidad : undefined,
+      }),
     });
 
     const result = await response.json();

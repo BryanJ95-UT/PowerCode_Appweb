@@ -17,8 +17,22 @@ app.use(express.json());
 app.use(express.static(frontendPath));
 
 const clientesRoutes = require("./routes/clientes.routes");
+const adminRoutes = require("./routes/admin.routes");
+const gymsRoutes = require("./routes/gyms.routes");
+const institucionesRoutes = require("./routes/instituciones.routes");
+const reportesRoutes = require("./routes/reportes.routes");
+const entrenadorRoutes = require("./routes/entrenador.routes");
+const clienteRoutes = require("./routes/cliente.routes");
+const integracionesRoutes = require("./routes/integraciones.routes");
 
 app.use("/api/clientes", clientesRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/gyms", gymsRoutes);
+app.use("/api/instituciones", institucionesRoutes);
+app.use("/api/reportes", reportesRoutes);
+app.use("/api/entrenador", entrenadorRoutes);
+app.use("/api/cliente", clienteRoutes);
+app.use("/api/integraciones", integracionesRoutes);
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -32,8 +46,64 @@ db.connect((err) => {
     console.log("Error conexion BD:", err);
   } else {
     console.log("Conectado a MySQL");
+    ensureFeatureTables();
   }
 });
+
+function ensureFeatureTables() {
+  const statements = [
+    `CREATE TABLE IF NOT EXISTS gimnasios (
+      id_gym INT AUTO_INCREMENT PRIMARY KEY,
+      nombre VARCHAR(120) NOT NULL,
+      direccion VARCHAR(180) NOT NULL,
+      telefono VARCHAR(30),
+      latitud DECIMAL(10, 7),
+      longitud DECIMAL(10, 7),
+      descripcion TEXT,
+      fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )`,
+    `CREATE TABLE IF NOT EXISTS reportes (
+      id_reporte INT AUTO_INCREMENT PRIMARY KEY,
+      id_usuario INT NOT NULL,
+      asunto VARCHAR(120) NOT NULL,
+      mensaje TEXT NOT NULL,
+      respuesta_admin TEXT,
+      estado VARCHAR(30) DEFAULT 'abierto',
+      fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+    )`,
+    `CREATE TABLE IF NOT EXISTS dietas (
+      id_dieta INT AUTO_INCREMENT PRIMARY KEY,
+      id_entrenador INT NOT NULL,
+      id_cliente INT NOT NULL,
+      objetivo VARCHAR(120) NOT NULL,
+      descripcion TEXT NOT NULL,
+      fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (id_entrenador) REFERENCES entrenadores(id_entrenador),
+      FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
+    )`,
+    `CREATE TABLE IF NOT EXISTS agenda_entrenador (
+      id_evento INT AUTO_INCREMENT PRIMARY KEY,
+      id_entrenador INT NOT NULL,
+      id_cliente INT,
+      titulo VARCHAR(140) NOT NULL,
+      fecha DATE NOT NULL,
+      hora TIME,
+      estado VARCHAR(30) DEFAULT 'programado',
+      FOREIGN KEY (id_entrenador) REFERENCES entrenadores(id_entrenador),
+      FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
+    )`,
+    `ALTER TABLE rutinas ADD COLUMN video_url VARCHAR(255) NULL`,
+  ];
+
+  statements.forEach((statement) => {
+    db.query(statement, (err) => {
+      if (err && err.code !== "ER_DUP_FIELDNAME") {
+        console.log("Aviso al preparar tablas:", err.message);
+      }
+    });
+  });
+}
 
 const mailTransporter = nodemailer.createTransport({
   service: process.env.MAIL_SERVICE || "gmail",
@@ -71,10 +141,20 @@ async function sendConfirmationEmail({ nombre, correo, token }) {
 }
 
 app.post("/api/register", async (req, res) => {
-  const { nombre, correo, password } = req.body;
+  const { nombre, correo, password, id_rol, admin_code, especialidad } = req.body;
 
   if (!nombre || !correo || !password) {
     return res.status(400).json({ message: "Todos los campos son obligatorios" });
+  }
+
+  const selectedRole = Number(id_rol || 2);
+
+  if (![1, 2, 3].includes(selectedRole)) {
+    return res.status(400).json({ message: "Rol no valido" });
+  }
+
+  if (selectedRole === 1 && admin_code !== (process.env.ADMIN_REGISTER_CODE || "POWERADMIN2026")) {
+    return res.status(403).json({ message: "Codigo de administrador incorrecto" });
   }
 
   if (!process.env.MAIL_USER || !process.env.MAIL_PASS) {
@@ -89,8 +169,8 @@ app.post("/api/register", async (req, res) => {
 
     db.query(
       "INSERT INTO usuarios (nombre, correo, password, id_rol, estado, token_confirmacion) VALUES (?, ?, ?, ?, ?, ?)",
-      [nombre, correo, hash, 2, false, token],
-      async (err) => {
+      [nombre, correo, hash, selectedRole, false, token],
+      async (err, result) => {
         if (err) {
           console.log("ERROR BD:", err);
 
@@ -102,6 +182,22 @@ app.post("/api/register", async (req, res) => {
         }
 
         try {
+          const idUsuario = result.insertId;
+
+          if (selectedRole === 2) {
+            db.query(
+              "INSERT INTO clientes (id_usuario, estado_membresia) VALUES (?, ?)",
+              [idUsuario, "Pendiente"]
+            );
+          }
+
+          if (selectedRole === 3) {
+            db.query(
+              "INSERT INTO entrenadores (id_usuario, especialidad) VALUES (?, ?)",
+              [idUsuario, especialidad || "General"]
+            );
+          }
+
           await sendConfirmationEmail({ nombre, correo, token });
         } catch (emailError) {
           console.log("ERROR CORREO:", emailError);

@@ -1,61 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rutinas | Power Code</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
 </head>
-
 <body>
-
-  <!-- NAVBAR -->
-  <header class="nav">
-    <div class="brand">
-      <h1>Power Code</h1>
-    </div>
-
-    <nav class="menu">
-      <a href="index.html">Inicio</a>
-      <a href="rutinas.html">Rutinas</a>
-      <a href="productos.html">Productos</a>
-      <a href="login.html">Login</a>
+  <header class="dash-header">
+    <a class="dash-brand" href="../index.html">
+      <img src="../img/logo.svg" alt="Power Code">
+      <span>Rutinas</span>
+    </a>
+    <nav class="dash-actions">
+      <a href="../index.html">Inicio</a>
+      <a href="./dashboard.html">Panel</a>
     </nav>
   </header>
 
-  <!-- CONTENIDO -->
-  <main class="page">
-
-    <h2 class="title-section">Rutinas de Entrenamiento</h2>
-
-    <div class="grid">
-
-      <!-- RUTINA 1 -->
-      <div class="card">
-        <h3>Rutina Principiante</h3>
-        <p>Ejercicios básicos para iniciar en el gimnasio.</p>
-        <p><strong>Nivel:</strong> Fácil</p>
-        <button class="btn primary">Ver rutina</button>
+  <main class="dash-shell">
+    <section class="dash-panel">
+      <div class="panel-head">
+        <div>
+          <p class="dash-kicker">YouTube</p>
+          <h2>Mis rutinas</h2>
+        </div>
       </div>
-
-      <!-- RUTINA 2 -->
-      <div class="card">
-        <h3>Rutina Intermedia</h3>
-        <p>Entrenamiento para mejorar fuerza y resistencia.</p>
-        <p><strong>Nivel:</strong> Medio</p>
-        <button class="btn primary">Ver rutina</button>
-      </div>
-
-      <!-- RUTINA 3 -->
-      <div class="card">
-        <h3>Rutina Avanzada</h3>
-        <p>Alta intensidad para resultados rápidos.</p>
-        <p><strong>Nivel:</strong> Difícil</p>
-        <button class="btn primary">Ver rutina</button>
-      </div>
-
-    </div>
-
+      <div id="rutinasContent" class="panel-content"></div>
+    </section>
   </main>
 
+  <script src="../js/rutinas.js"></script>
 </body>
 </html>

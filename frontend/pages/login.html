@@ -93,6 +93,21 @@
 
         <div class="field-row">
           <div class="field-group">
+            <label for="reg-rol">Tipo de cuenta</label>
+            <select name="id_rol" id="reg-rol" required>
+              <option value="2">Cliente</option>
+              <option value="3">Entrenador</option>
+              <option value="1">Administrador</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="reg-especialidad">Especialidad / codigo admin</label>
+            <input type="text" name="especialidad" id="reg-especialidad" placeholder="Ej. Fuerza, cardio o codigo admin">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field-group">
             <label for="reg-password">Contrasena</label>
             <input type="password" name="password" id="reg-password" placeholder="Minimo 8 caracteres" required>
           </div>

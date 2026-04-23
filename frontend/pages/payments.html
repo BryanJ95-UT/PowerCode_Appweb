@@ -1,79 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pagos | Power Code</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
 </head>
-
 <body>
-
-  <!-- NAVBAR -->
-  <header class="nav">
-    <div class="brand">
-      <h1>Power Code</h1>
-    </div>
-
-    <nav class="menu">
-      <a href="index.html">Inicio</a>
-      <a href="rutinas.html">Rutinas</a>
-      <a href="productos.html">Productos</a>
-      <a href="gyms.html">Gimnasios</a>
-      <a href="memberships.html">Membresías</a>
-      <a href="contacto.html">Contacto</a>
-      <a href="login.html">Login</a>
+  <header class="dash-header">
+    <a class="dash-brand" href="../index.html">
+      <img src="../img/logo.svg" alt="Power Code">
+      <span>Pagos</span>
+    </a>
+    <nav class="dash-actions">
+      <a href="../index.html">Inicio</a>
+      <a href="./dashboard.html">Panel</a>
     </nav>
   </header>
 
-  <!-- CONTENIDO -->
-  <main class="page">
-
-    <div class="grid">
-
-      <!-- RESUMEN DEL PLAN -->
-      <div class="card">
-        <h2 class="title-section">Resumen de compra</h2>
-        <p><strong>Plan:</strong> Premium</p>
-        <p><strong>Precio:</strong> $500 MXN / mes</p>
-        <p><strong>Acceso:</strong> Completo</p>
+  <main class="dash-shell">
+    <section class="dash-panel">
+      <div class="panel-head">
+        <div>
+          <p class="dash-kicker">Pasarela demo</p>
+          <h2>Pagos y membresia</h2>
+        </div>
       </div>
-
-      <!-- FORMULARIO DE PAGO -->
-      <div class="card">
-
-        <h2 class="title-section">Datos de pago</h2>
-
-        <form>
-
-          <label>Nombre en la tarjeta</label>
-          <input type="text" placeholder="Nombre completo">
-
-          <br><br>
-
-          <label>Número de tarjeta</label>
-          <input type="text" placeholder="1234 5678 9012 3456">
-
-          <br><br>
-
-          <label>Fecha de expiración</label>
-          <input type="text" placeholder="MM/AA">
-
-          <br><br>
-
-          <label>CVV</label>
-          <input type="text" placeholder="123">
-
-          <br><br>
-
-          <button class="btn primary" type="submit">Pagar</button>
-
-        </form>
-
-      </div>
-
-    </div>
-
+      <div id="paymentsContent" class="panel-content"></div>
+    </section>
   </main>
 
+  <script src="../js/payments.js"></script>
 </body>
 </html>
