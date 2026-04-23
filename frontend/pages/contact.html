@@ -1,100 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contacto | Power Code</title>
-  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <header class="nav">
-    <a class="brand" href="index.html">
-      <img src="../../assets/img/logo.svg" alt="Power Code Logo" class="logo-svg">
+  <header class="dash-header">
+    <a class="dash-brand" href="../index.html">
+      <img src="../img/logo.svg" alt="Power Code">
+      <span>Contacto</span>
     </a>
-    <nav class="menu">
-      <a href="index.html">Inicio</a>
-      <a href="gyms.html">Gimnasios</a>
-      <a href="memberships.html">Membresías</a>
-      <a href="support.html">Soporte</a>
-      <a class="active" href="contact.html">Contacto</a>
+    <nav class="dash-actions">
+      <a href="../index.html">Inicio</a>
+      <a href="./memberships.html">Membresias</a>
+      <a href="./login.html">Ingresar</a>
     </nav>
-    <a href="../auth/login.php" class="cta">INGRESAR →</a>
   </header>
 
-  <!-- Encabezado compacto -->
-  <section class="page-header">
-    <h1>Contacto</h1>
-    <p>Conoce más sobre Power Code y nuestro equipo</p>
-  </section>
-
-  <!-- Información corporativa -->
-  <section class="page">
-    <div class="about-block">
-      <h2>¿Qué es Power Code?</h2>
-      <p>
-        Power Code es una plataforma tecnológica integral de gestión deportiva, concebida como un producto digital de alto impacto social y operativo, diseñada para modernizar, centralizar y escalar la administración de gimnasios tanto públicos como privados.
-      </p>
-      <p>
-        Desde una óptica corporativa, Power Code no es solo un sistema, es un ecosistema digital inteligente.
-      </p>
-    </div>
-
-    <div class="team-block">
-      <h2>Integrantes</h2>
-      <ul class="team-list">
-        <li>Angel Nazul Gutiérrez Cruz — M-240162</li>
-        <li>Bryan Javier González Paredes — M-240078</li>
-        <li>Emigdio Yait Aguirre Martínez — M-240545</li>
-        <li>Alan Cruz Baltazar — M-240516</li>
-      </ul>
-    </div>
-
-    <div class="features-block">
-      <h2>Lo que permite Power Code</h2>
-      <ul class="features-list">
-        <li>Administrar usuarios, entrenadores y personal.</li>
-        <li>Controlar accesos y asistencia en tiempo real.</li>
-        <li>Gestionar rutinas, pagos y membresías.</li>
-        <li>Analizar métricas operativas mediante dashboards.</li>
-        <li>Integrarse con programas sociales y deportivos.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Formulario de contacto -->
-  <section class="page">
-    <form class="trainer-form">
-      <div class="field-group">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+  <main class="dash-shell">
+    <section class="dash-panel">
+      <div class="panel-head">
+        <div>
+          <p class="dash-kicker">Equipo</p>
+          <h2>Power Code</h2>
+        </div>
       </div>
+      <div class="panel-content">
+        <div class="module-grid">
+          <article>
+            <strong>Que es</strong>
+            <span>Una plataforma web para administrar gimnasios, rutinas, pagos, membresias y apoyos deportivos.</span>
+          </article>
+          <article>
+            <strong>Integrantes</strong>
+            <span>Angel, Bryan, Emigdio y Alan.</span>
+          </article>
+          <article>
+            <strong>Soporte</strong>
+            <span>contacto@powercode.mx</span>
+          </article>
+        </div>
 
-      <div class="field-group">
-        <label for="correo">Correo electrónico</label>
-        <input type="email" id="correo" name="correo" placeholder="tu@correo.com">
+        <form class="inline-form contact-form" id="contactForm">
+          <input name="nombre" placeholder="Nombre" required>
+          <input type="email" name="correo" placeholder="Correo" required>
+          <input name="mensaje" placeholder="Mensaje" required>
+          <button type="submit">Enviar</button>
+        </form>
       </div>
+    </section>
+  </main>
 
-      <div class="field-group">
-        <label for="mensaje">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí"></textarea>
-      </div>
-
-      <button type="submit" class="btn primary">Enviar mensaje</button>
-    </form>
-  </section>
-
-  <!-- Barra de información -->
-  <section class="info-bar">
-    <div class="info-bar-inner">
-      <span class="info-item strong">Power Code Web · Plataforma de gestión para gimnasios</span>
-      <span class="info-item">Funcionalidades: rutinas, asistencia, pagos, membresías y panel para entrenadores.</span>
-      <span class="info-item">Ideal para gimnasios públicos, privados y comunitarios.</span>
-      <span class="info-item">Soporte: contacto@powercode.mx</span>
-    </div>
-  </section>
-
-  <!-- WhatsApp flotante -->
-  <a class="wa" href="https://wa.me/5215555555555" target="_blank" rel="noopener">⌕</a>
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      alert("Mensaje recibido. Lo conectaremos al modulo de reportes en el siguiente avance.");
+      event.currentTarget.reset();
+    });
+  </script>
 </body>
 </html>

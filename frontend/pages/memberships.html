@@ -1,68 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Membresías | Power Code</title>
-  <link rel="stylesheet" href="../../assets/css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Membresias | Power Code</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <header class="nav">
-    <a class="brand" href="index.html">
-      <img src="../../assets/img/logo.svg" alt="Power Code Logo" class="logo-svg">
+  <header class="dash-header">
+    <a class="dash-brand" href="../index.html">
+      <img src="../img/logo.svg" alt="Power Code">
+      <span>Membresias</span>
     </a>
-    <nav class="menu">
-      <a href="index.html">Inicio</a>
-      <a href="gyms.html">Gimnasios</a>
-      <a class="active" href="memberships.html">Membresías</a>
-      <a href="support.html">Soporte</a>
-      <a href="contact.html">Contacto</a>
+    <nav class="dash-actions">
+      <a href="../index.html">Inicio</a>
+      <a href="./gyms.html">Gimnasios</a>
+      <a href="./payments.html">Pagos</a>
+      <a href="./login.html">Ingresar</a>
     </nav>
-    <a href="../auth/login.php" class="cta">INGRESAR →</a>
   </header>
 
-  <!-- Encabezado compacto -->
-  <section class="page-header">
-    <h1>Membresías</h1>
-    <p>Elige el plan que mejor se adapte a ti</p>
-  </section>
+  <main class="dash-shell">
+    <section class="dash-hero">
+      <div>
+        <p class="dash-kicker">Planes</p>
+        <h1>Elige tu membresia</h1>
+        <p>Planes pensados para clientes, estudiantes y atletas con seguimiento personalizado.</p>
+      </div>
+      <div class="dash-user-card">
+        <span>Power Code</span>
+        <strong>Entrena con control</strong>
+      </div>
+    </section>
 
-  <!-- Grid de planes -->
-  <section class="plans-grid">
-    <div class="plan-card">
-      <h2>Básico</h2>
-      <p>Acceso ilimitado al gimnasio</p>
-      <span class="price">$299/mes</span>
-      <a href="../auth/login.php" class="btn">Elegir</a>
-    </div>
-
-    <div class="plan-card">
-      <h2>Premium</h2>
-      <p>Rutinas personalizadas + seguimiento</p>
-      <span class="price">$499/mes</span>
-      <a href="../auth/login.php" class="btn">Elegir</a>
-    </div>
-
-    <div class="plan-card">
-      <h2>Elite</h2>
-      <p>Entrenadores + eventos exclusivos</p>
-      <span class="price">$799/mes</span>
-      <a href="../auth/login.php" class="btn">Elegir</a>
-    </div>
-  </section>
-
-  <!-- Barra de información -->
-  <section class="info-bar">
-    <div class="info-bar-inner">
-      <span class="info-item strong">Power Code Web · Plataforma de gestión para gimnasios</span>
-      <span class="info-item">Funcionalidades: rutinas, asistencia, pagos, membresías y panel para entrenadores.</span>
-      <span class="info-item">Ideal para gimnasios públicos, privados y comunitarios.</span>
-      <span class="info-item">Soporte: contacto@powercode.mx</span>
-    </div>
-  </section>
-
-  <!-- WhatsApp flotante -->
-  <a class="wa" href="https://wa.me/5215555555555" target="_blank" rel="noopener">⌕</a>
+    <section class="module-grid">
+      <article>
+        <strong>Basica</strong>
+        <span>Acceso general al gimnasio y consulta de asistencia.</span>
+        <strong>$299/mes</strong>
+        <a class="mini-btn" href="./login.html">Elegir</a>
+      </article>
+      <article>
+        <strong>Premium</strong>
+        <span>Rutinas personalizadas, seguimiento y reportes de progreso.</span>
+        <strong>$499/mes</strong>
+        <a class="mini-btn" href="./login.html">Elegir</a>
+      </article>
+      <article>
+        <strong>Elite</strong>
+        <span>Entrenador, dietas, evaluacion deportiva y prioridad en apoyos.</span>
+        <strong>$799/mes</strong>
+        <a class="mini-btn" href="./login.html">Elegir</a>
+      </article>
+    </section>
+  </main>
 </body>
 </html>

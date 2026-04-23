@@ -1,67 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Apoyos | Power Code</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
 </head>
-
 <body>
-
-  <!-- NAVBAR -->
-  <header class="nav">
-    <div class="brand">
-      <h1>Power Code</h1>
-    </div>
-
-    <nav class="menu">
-      <a href="index.html">Inicio</a>
-      <a href="rutinas.html">Rutinas</a>
-      <a href="productos.html">Productos</a>
-      <a href="gyms.html">Gimnasios</a>
-      <a href="contacto.html">Contacto</a>
-      <a href="apoyos.html">Apoyos</a>
-      <a href="login.html">Login</a>
+  <header class="dash-header">
+    <a class="dash-brand" href="../index.html">
+      <img src="../img/logo.svg" alt="Power Code">
+      <span>Apoyos</span>
+    </a>
+    <nav class="dash-actions">
+      <a href="../index.html">Inicio</a>
+      <a href="./dashboard.html">Panel</a>
+      <a href="./contact.html">Contacto</a>
     </nav>
   </header>
 
-  <!-- CONTENIDO -->
-  <main class="page">
+  <main class="dash-shell">
+    <section class="dash-hero">
+      <div>
+        <p class="dash-kicker">Impacto social</p>
+        <h1>Becas y apoyos</h1>
+        <p>Postulacion para estudiantes, atletas y personas con recursos limitados.</p>
+      </div>
+      <div class="dash-user-card">
+        <span>Modulo social</span>
+        <strong>Instituciones y talento deportivo</strong>
+      </div>
+    </section>
 
-    <div class="card" style="max-width: 500px; margin: auto;">
-
-      <h2 class="title-section">Solicitud de Apoyo</h2>
-
-      <p>
-        Este programa está dirigido a personas con talento deportivo o recursos limitados.
-      </p>
-
-      <br>
-
-      <form>
-
-        <label>Nombre completo</label>
-        <input type="text" placeholder="Tu nombre completo">
-
-        <br><br>
-
-        <label>Correo electrónico</label>
-        <input type="email" placeholder="correo@ejemplo.com">
-
-        <br><br>
-
-        <label>Motivo del apoyo</label>
-        <textarea rows="4" placeholder="Describe tu situación"></textarea>
-
-        <br><br>
-
-        <button class="btn primary" type="submit">Enviar solicitud</button>
-
-      </form>
-
-    </div>
-
+    <section class="dash-panel">
+      <div class="panel-head">
+        <div>
+          <p class="dash-kicker">Solicitud</p>
+          <h2>Enviar postulacion</h2>
+        </div>
+      </div>
+      <div class="panel-content">
+        <form class="profile-form" id="supportForm">
+          <label>Nombre completo<input name="nombre" required></label>
+          <label>Correo<input type="email" name="correo" required></label>
+          <label>Tipo de apoyo<input name="tipo" placeholder="Beca, apoyo economico, talento deportivo" required></label>
+          <label>Motivo<input name="motivo" placeholder="Describe tu situacion" required></label>
+          <button class="save-btn" type="submit">Enviar solicitud</button>
+        </form>
+      </div>
+    </section>
   </main>
 
+  <script>
+    document.getElementById("supportForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      alert("Solicitud registrada como prototipo. Despues la conectamos a becas e instituciones.");
+      event.currentTarget.reset();
+    });
+  </script>
 </body>
 </html>

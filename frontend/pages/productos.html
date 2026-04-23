@@ -1,61 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Productos | Power Code</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
 </head>
-
 <body>
-
-  <!-- NAVBAR -->
-  <header class="nav">
-    <div class="brand">
-      <h1>Power Code</h1>
-    </div>
-
-    <nav class="menu">
-      <a href="index.html">Inicio</a>
-      <a href="rutinas.html">Rutinas</a>
-      <a href="productos.html">Productos</a>
-      <a href="login.html">Login</a>
+  <header class="dash-header">
+    <a class="dash-brand" href="../index.html">
+      <img src="../img/logo.svg" alt="Power Code">
+      <span>Productos</span>
+    </a>
+    <nav class="dash-actions">
+      <a href="../index.html">Inicio</a>
+      <a href="./payments.html">Pagos</a>
+      <a href="./dashboard.html">Panel</a>
     </nav>
   </header>
 
-  <!-- CONTENIDO -->
-  <main class="page">
-
-    <h2 class="title-section">Productos</h2>
-
-    <div class="grid">
-
-      <!-- PRODUCTO 1 -->
-      <div class="card">
-        <h3>Proteína Whey</h3>
-        <p>Suplemento para aumento de masa muscular.</p>
-        <p><strong>$800 MXN</strong></p>
-        <button class="btn primary">Comprar</button>
+  <main class="dash-shell">
+    <section class="dash-panel">
+      <div class="panel-head">
+        <div>
+          <p class="dash-kicker">Tienda demo</p>
+          <h2>Productos para entrenamiento</h2>
+        </div>
       </div>
-
-      <!-- PRODUCTO 2 -->
-      <div class="card">
-        <h3>Creatina</h3>
-        <p>Mejora el rendimiento físico.</p>
-        <p><strong>$500 MXN</strong></p>
-        <button class="btn primary">Comprar</button>
+      <div class="panel-content">
+        <div class="module-grid">
+          <article><strong>Proteina Whey</strong><span>Suplemento para masa muscular.</span><strong>$800 MXN</strong><button class="mini-btn">Comprar</button></article>
+          <article><strong>Creatina</strong><span>Apoyo para rendimiento fisico.</span><strong>$500 MXN</strong><button class="mini-btn">Comprar</button></article>
+          <article><strong>Guantes Gym</strong><span>Agarre y proteccion para entrenamiento.</span><strong>$250 MXN</strong><button class="mini-btn">Comprar</button></article>
+        </div>
       </div>
-
-      <!-- PRODUCTO 3 -->
-      <div class="card">
-        <h3>Guantes Gym</h3>
-        <p>Mayor agarre y protección.</p>
-        <p><strong>$250 MXN</strong></p>
-        <button class="btn primary">Comprar</button>
-      </div>
-
-    </div>
-
+    </section>
   </main>
 
+  <script>
+    document.querySelectorAll(".mini-btn").forEach((button) => {
+      button.addEventListener("click", () => alert("Compra demo. Se conectara a la pasarela de pagos."));
+    });
+  </script>
 </body>
 </html>
