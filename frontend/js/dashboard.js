@@ -118,13 +118,14 @@ async function submitJson(form, path, message) {
 
 async function renderAdmin(section = "inicio") {
   const menu = roleMenu([
-    { id: "inicio", label: "Resumen" },
-    { id: "usuarios", label: "Usuarios" },
-    { id: "gyms", label: "Gimnasios" },
-    { id: "instituciones", label: "Instituciones" },
-    { id: "reportes", label: "Reportes" },
-    { id: "integraciones", label: "Integraciones" },
-  ]);
+  { id: "inicio", label: "Resumen" },
+  { id: "usuarios", label: "Usuarios" },
+  { id: "gyms", label: "Gimnasios" },
+  { id: "instituciones", label: "Instituciones" },
+  { id: "asignaciones", label: "Asignaciones" },
+  { id: "reportes", label: "Reportes" },
+  { id: "integraciones", label: "Integraciones" },
+]);
 
   const resumen = await api("/admin/resumen");
   renderCards([
@@ -218,7 +219,53 @@ phoneInput.addEventListener("input", () => {
       event.preventDefault();
       submitJson(event.currentTarget, "/instituciones", "Institucion registrada");
     });
-  } else if (section === "reportes") {
+    } else if (section === "asignaciones") {
+
+  const data = await api("/admin/asignaciones-data");
+  const lista = await api("/admin/asignaciones");
+
+  content.innerHTML = menu + `
+    <form class="inline-form" id="assignForm">
+
+      <select name="id_cliente" required>
+        <option value="">Selecciona cliente</option>
+        ${data.clientes.map(c => `
+          <option value="${c.id_cliente}">${c.nombre}</option>
+        `).join("")}
+      </select>
+
+      <select name="id_entrenador" required>
+        <option value="">Selecciona entrenador</option>
+        ${data.entrenadores.map(e => `
+          <option value="${e.id_entrenador}">${e.nombre}</option>
+        `).join("")}
+      </select>
+
+      <button type="submit">Asignar</button>
+
+    </form>
+
+    ${lista.length ? table(
+      ["Cliente", "Entrenador"],
+      lista.map(a => `
+        <tr>
+          <td>${a.cliente}</td>
+          <td>${a.entrenador}</td>
+        </tr>
+      `)
+    ) : empty("No hay asignaciones registradas.")}
+  `;
+
+  document.getElementById("assignForm").addEventListener("submit", (event) => {
+    event.preventDefault();
+    submitJson(
+      event.currentTarget,
+      "/admin/asignar-cliente",
+      "Cliente asignado"
+    );
+  });
+
+} else if (section === "reportes") {
     const reportes = await api("/reportes?admin=1");
     content.innerHTML = menu + (reportes.length ? table(
       ["Usuario", "Asunto", "Mensaje", "Estado", "Respuesta"],
@@ -231,6 +278,7 @@ phoneInput.addEventListener("input", () => {
           <td><button class="mini-btn" data-reporte="${reporte.id_reporte}">Responder</button></td>
         </tr>
       `)
+      
     ) : empty("No hay reportes por responder."));
     content.querySelectorAll("[data-reporte]").forEach((button) => {
       button.addEventListener("click", async () => {
@@ -277,7 +325,7 @@ async function renderEntrenador(section = "inicio") {
   const resumen = await api(`/entrenador/resumen/${usuario.id}`);
   entrenadorId = resumen.id_entrenador;
   clientesAsignados = await api(`/clientes/entrenador/${usuario.id}`);
-  clientesCache = await api("/clientes");
+clientesCache = clientesAsignados;
 
   renderCards([
     { label: "Rutinas", value: resumen.rutinas },
@@ -350,11 +398,18 @@ async function renderEntrenador(section = "inicio") {
       submitJson(event.currentTarget, "/entrenador/agenda", "Evento agregado");
     });
   } else if (section === "alumnos") {
-    content.innerHTML = menu + (clientesAsignados.length ? table(
-      ["Alumno", "Correo", "Telefono", "Membresia"],
-      clientesAsignados.map((c) => `<tr><td>${c.nombre}</td><td>${c.correo}</td><td>${c.telefono || "-"}</td><td>${c.estado_membresia || "-"}</td></tr>`)
-    ) : empty("Aun no tienes alumnos asignados por rutina."));
-  } else {
+  content.innerHTML = menu + (clientesCache.length ? table(
+    ["Alumno", "Correo", "Telefono", "Membresia"],
+    clientesCache.map((c) => `
+      <tr>
+        <td>${c.nombre}</td>
+        <td>${c.correo}</td>
+        <td>${c.telefono || "-"}</td>
+        <td>${c.estado_membresia || "-"}</td>
+      </tr>
+    `)
+  ) : empty("No hay clientes registrados."));
+} else {
     content.innerHTML = menu + `
       <div class="module-grid">
         <article><strong>Rutinas con video</strong><span>Agrega links de YouTube para guiar ejercicios.</span></article>

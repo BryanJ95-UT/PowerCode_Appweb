@@ -197,15 +197,7 @@ Body:
 * bcrypt (seguridad)
 * nodemailer (emails)
 
----
 
-#  OBSERVACIONES
-
-✔ Se utilizan métodos GET, POST y PATCH
-⚠ No hay endpoints DELETE
-⚠ Uso parcial de REST
-
----
 
 #  POSIBLES MEJORAS
 

@@ -63,7 +63,7 @@ router.get('/usuario/:id_usuario', async (req, res) => {
 router.get('/entrenador/:id_usuario', async (req, res) => {
   try {
     const [clientes] = await db.query(`
-      SELECT DISTINCT
+      SELECT
         c.id_cliente,
         c.id_usuario,
         u.nombre,
@@ -71,17 +71,29 @@ router.get('/entrenador/:id_usuario', async (req, res) => {
         c.telefono,
         c.direccion,
         c.estado_membresia
-      FROM entrenadores e
-      INNER JOIN rutinas r ON r.id_entrenador = e.id_entrenador
-      INNER JOIN clientes c ON c.id_cliente = r.id_cliente
-      INNER JOIN usuarios u ON c.id_usuario = u.id_usuario
+      FROM entrenador_clientes ec
+
+      INNER JOIN entrenadores e
+        ON e.id_entrenador = ec.id_entrenador
+
+      INNER JOIN clientes c
+        ON c.id_cliente = ec.id_cliente
+
+      INNER JOIN usuarios u
+        ON u.id_usuario = c.id_usuario
+
       WHERE e.id_usuario = ?
+
+      ORDER BY u.nombre ASC
     `, [req.params.id_usuario]);
 
     res.json(clientes);
+
   } catch (error) {
     console.error(error);
-    res.status(500).json({ mensaje: 'Error al obtener clientes del entrenador' });
+    res.status(500).json({
+      mensaje: 'Error al obtener clientes del entrenador'
+    });
   }
 });
 

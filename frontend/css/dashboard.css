@@ -457,3 +457,16 @@ th {
 .panel-head > div {
   min-width: 0;
 }
+
+/* SOLO COLOR SELECTS ASIGNACIONES */
+
+#assignForm select{
+  background:#0f1117 !important;
+  color:#ffffff !important;
+  border:1px solid #2a2f3a !important;
+}
+
+#assignForm option{
+  background:#111827 !important;
+  color:#ffffff !important;
+}

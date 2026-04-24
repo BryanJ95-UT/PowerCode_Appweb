@@ -22,7 +22,7 @@ switchButtons.forEach((button) => {
 });
 
 if (new URLSearchParams(window.location.search).get("confirmada") === "1") {
-  alert("Cuenta confirmada correctamente. Ya puedes iniciar sesion.");
+  showToast(" Cuenta confirmada correctamente. Ya puedes iniciar sesión.");
   showForm("loginForm");
 }
 
@@ -144,10 +144,11 @@ sendBtn?.addEventListener("click", async () => {
     alert("Error conectando con el servidor");
   }
 });
-function showToast(message) {
+function showToast(message, type = "success") {
   const toast = document.getElementById("toast");
+
   toast.textContent = message;
-  toast.className = "toast show success";
+  toast.className = `toast show ${type}`;
 
   setTimeout(() => {
     toast.classList.remove("show");
