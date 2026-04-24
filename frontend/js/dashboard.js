@@ -147,16 +147,28 @@ async function renderAdmin(section = "inicio") {
       `)
     );
   } else if (section === "gyms") {
-    const gyms = await api("/gyms");
-    content.innerHTML = menu + `
-      <form class="inline-form" id="gymForm">
-        <input name="nombre" placeholder="Nombre del gimnasio" required>
-        <input name="direccion" placeholder="Direccion" required>
-        <input name="telefono" placeholder="Telefono">
-        <input name="latitud" placeholder="Latitud para Maps">
-        <input name="longitud" placeholder="Longitud para Maps">
-        <button type="submit">Agregar gym</button>
-      </form>
+  const gyms = await api("/gyms");
+
+  content.innerHTML = menu + `
+    <form class="inline-form" id="gymForm">
+      <input name="nombre" placeholder="Nombre del gimnasio" required>
+      <input name="direccion" placeholder="Direccion" required>
+      <input 
+       name="telefono"
+       placeholder="Telefono (10 digitos)"
+       maxlength="10"
+       pattern="[0-9]{10}"
+       inputmode="numeric"
+       required
+>
+
+      <input name="latitud" id="latitud" placeholder="Latitud" readonly>
+      <input name="longitud" id="longitud" placeholder="Longitud" readonly>
+
+      <button type="submit">Agregar gym</button>
+    </form>
+
+    <div id="map" style="height:400px;border-radius:16px;margin-bottom:20px;"></div>
       ${gyms.length ? table(
         ["Gimnasio", "Direccion", "Telefono", "Maps"],
         gyms.map((gym) => `
@@ -169,10 +181,20 @@ async function renderAdmin(section = "inicio") {
         `)
       ) : empty("Aun no hay gimnasios registrados.")}
     `;
-    document.getElementById("gymForm").addEventListener("submit", (event) => {
-      event.preventDefault();
-      submitJson(event.currentTarget, "/gyms", "Gimnasio registrado");
-    });
+   document.getElementById("gymForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+  submitJson(event.currentTarget, "/gyms", "Gimnasio registrado");
+});
+setTimeout(() => {
+  initGymMap();
+}, 300);
+const phoneInput = document.querySelector('#gymForm input[name="telefono"]');
+
+phoneInput.addEventListener("input", () => {
+  phoneInput.value = phoneInput.value
+    .replace(/\D/g, "")
+    .slice(0, 10);
+});
   } else if (section === "instituciones") {
     const instituciones = await api("/instituciones");
     content.innerHTML = menu + `
@@ -375,10 +397,29 @@ async function renderCliente(section = "inicio") {
     ) : empty("Todavia no tienes dietas asignadas."));
   } else if (section === "asistencias") {
     const asistencias = await api(`/cliente/asistencias/${usuario.id}`);
-    content.innerHTML = menu + (asistencias.length ? table(
-      ["Fecha"],
-      asistencias.map((a) => `<tr><td>${a.fecha}</td></tr>`)
-    ) : empty("No hay asistencias registradas."));
+    content.innerHTML = menu + `
+      <div class="attendance-actions">
+        <button class="save-btn" id="attendanceBtn" type="button">Registrar asistencia de hoy</button>
+        <span>Solo puedes registrar una asistencia por dia.</span>
+      </div>
+      ${asistencias.length ? table(
+        ["Fecha"],
+        asistencias.map((a) => `<tr><td>${a.fecha}</td></tr>`)
+      ) : empty("No hay asistencias registradas.")}
+    `;
+
+    document.getElementById("attendanceBtn").addEventListener("click", async () => {
+      try {
+        const result = await api("/cliente/asistencias", {
+          method: "POST",
+          body: JSON.stringify({ id_usuario: usuario.id }),
+        });
+        alert(result.message);
+        loadDashboard();
+      } catch (error) {
+        alert(error.message);
+      }
+    });
   } else if (section === "pagos") {
     const pagos = await api(`/cliente/pagos/${usuario.id}`);
     content.innerHTML = menu + `
@@ -466,3 +507,37 @@ refreshBtn.addEventListener("click", loadDashboard);
 logoutBtn.addEventListener("click", logout);
 
 loadDashboard();
+
+function initGymMap() {
+  if (!window.google) return;
+
+  const center = { lat: 20.1772, lng: -98.0524 };
+
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 14,
+    center
+  });
+
+  const marker = new google.maps.Marker({
+    position: center,
+    map,
+    draggable: true
+  });
+
+  document.getElementById("latitud").value = center.lat;
+  document.getElementById("longitud").value = center.lng;
+
+  map.addListener("click", (e) => {
+    marker.setPosition(e.latLng);
+
+    document.getElementById("latitud").value = e.latLng.lat();
+    document.getElementById("longitud").value = e.latLng.lng();
+  });
+
+  marker.addListener("dragend", () => {
+    const pos = marker.getPosition();
+
+    document.getElementById("latitud").value = pos.lat();
+    document.getElementById("longitud").value = pos.lng();
+  });
+}

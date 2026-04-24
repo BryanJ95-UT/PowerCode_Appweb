@@ -18,6 +18,11 @@ router.post("/", async (req, res) => {
   if (!nombre || !direccion) {
     return res.status(400).json({ message: "Nombre y direccion son obligatorios" });
   }
+  if (telefono && !/^\d{10}$/.test(telefono)) {
+  return res.status(400).json({
+    message: "Telefono invalido. Debe contener exactamente 10 numeros."
+  });
+}
 
   try {
     const [result] = await db.query(

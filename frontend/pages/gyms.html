@@ -19,15 +19,25 @@
   </header>
 
   <main class="dash-shell">
-    <section class="dash-panel">
-      <div class="panel-head">
-        <div>
-          <p class="dash-kicker">Maps</p>
-          <h2>Gimnasios disponibles</h2>
-        </div>
-      </div>
-      <div id="gymsContent" class="panel-content"></div>
-    </section>
+   <section class="dash-panel">
+
+  <div class="panel-head gyms-top">
+    <div>
+      <p class="dash-kicker">Maps</p>
+      <h2>Gimnasios disponibles</h2>
+    </div>
+
+    <input 
+      type="text" 
+      id="searchGym"
+      placeholder="Buscar gimnasio..."
+      class="search-box"
+    >
+  </div>
+
+  <div id="gymsContent" class="panel-content"></div>
+
+</section>
   </main>
 
   <script src="../js/gyms.js"></script>

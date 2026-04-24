@@ -94,11 +94,12 @@ function ensureFeatureTables() {
       FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
     )`,
     `ALTER TABLE rutinas ADD COLUMN video_url VARCHAR(255) NULL`,
+    `ALTER TABLE asistencias ADD UNIQUE KEY unique_asistencia_dia (id_cliente, fecha)`,
   ];
 
   statements.forEach((statement) => {
     db.query(statement, (err) => {
-      if (err && err.code !== "ER_DUP_FIELDNAME") {
+      if (err && err.code !== "ER_DUP_FIELDNAME" && err.code !== "ER_DUP_KEYNAME") {
         console.log("Aviso al preparar tablas:", err.message);
       }
     });
@@ -281,7 +282,99 @@ app.post("/api/login", (req, res) => {
     });
   });
 });
+app.post("/api/forgot-password", async (req, res) => {
+  const { correo } = req.body;
 
+  if (!correo) {
+    return res.status(400).json({ message: "Correo requerido" });
+  }
+
+  try {
+    db.query("SELECT * FROM usuarios WHERE correo = ?", [correo], async (err, results) => {
+      if (err) return res.status(500).json({ message: "Error en BD" });
+
+      if (results.length === 0) {
+        return res.status(404).json({ message: "Usuario no encontrado" });
+      }
+
+      const usuario = results[0];
+
+      const token = crypto.randomBytes(32).toString("hex");
+
+      db.query(
+        "UPDATE usuarios SET token_confirmacion = ? WHERE id_usuario = ?",
+        [token, usuario.id_usuario],
+        async (err) => {
+          if (err) return res.status(500).json({ message: "Error al guardar token" });
+
+          const resetUrl = `${APP_URL}/pages/reset-password.html?token=${token}`;
+
+          try {
+            await mailTransporter.sendMail({
+              from: `"Power Code" <${process.env.MAIL_USER}>`,
+              to: correo,
+              subject: "Recuperar contraseña",
+              html: `
+                <h2>Recupera tu contraseña</h2>
+                <p>Haz clic en el siguiente enlace:</p>
+                <a href="${resetUrl}" style="background:#ff5f0f;color:#fff;padding:10px 15px;border-radius:6px;text-decoration:none;">
+                  Restablecer contraseña
+                </a>
+                <p>O copia este link:</p>
+                <p>${resetUrl}</p>
+              `,
+            });
+
+            res.json({ message: "Correo de recuperación enviado" });
+
+          } catch (error) {
+            console.log("ERROR EMAIL:", error);
+            res.status(500).json({ message: "Error enviando correo" });
+          }
+        }
+      );
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Error del servidor" });
+  }
+});
+app.post("/api/reset-password", async (req, res) => {
+  const { token, password } = req.body;
+
+  if (!token || !password) {
+    return res.status(400).json({ message: "Datos incompletos" });
+  }
+
+  try {
+    db.query(
+      "SELECT * FROM usuarios WHERE token_confirmacion = ?",
+      [token],
+      async (err, results) => {
+        if (err) return res.status(500).json({ message: "Error en BD" });
+
+        if (results.length === 0) {
+          return res.status(400).json({ message: "Token invalido o expirado" });
+        }
+
+        const hash = await bcrypt.hash(password, 10);
+
+        db.query(
+          "UPDATE usuarios SET password = ?, token_confirmacion = NULL WHERE token_confirmacion = ?",
+          [hash, token],
+          (err) => {
+            if (err) return res.status(500).json({ message: "Error al actualizar contraseña" });
+
+            res.json({ message: "Contraseña actualizada correctamente" });
+          }
+        );
+      }
+    );
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Error del servidor" });
+  }
+});
 app.get("/", (req, res) => {
   res.sendFile(path.join(frontendPath, "index.html"));
 });

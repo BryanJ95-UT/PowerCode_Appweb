@@ -97,3 +97,59 @@ document.getElementById("registerForm")?.addEventListener("submit", async (event
     alert("Error conectando con el servidor");
   }
 });
+// Recuperar contraseña
+const modal = document.getElementById("modalForgot");
+const openBtn = document.getElementById("forgotPassword");
+const closeBtn = document.getElementById("closeModal");
+const sendBtn = document.getElementById("sendRecovery");
+
+openBtn?.addEventListener("click", (e) => {
+  e.preventDefault();
+  modal.classList.add("active");
+});
+
+closeBtn?.addEventListener("click", () => {
+  modal.classList.remove("active");
+});
+
+sendBtn?.addEventListener("click", async () => {
+  const correo = document.getElementById("forgotEmail").value;
+
+  if (!correo) {
+    alert("Ingresa un correo");
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_URL}/forgot-password`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ correo }),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      alert(result.message);
+      return;
+    }
+
+    showToast("Revisa tu correo 📩");
+    modal.classList.remove("active");
+
+  } catch (error) {
+    console.error(error);
+    alert("Error conectando con el servidor");
+  }
+});
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.className = "toast show success";
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000);
+}

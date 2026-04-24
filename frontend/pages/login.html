@@ -51,6 +51,20 @@
         <h1 class="auth-title">Bienvenido de vuelta</h1>
         <p class="auth-subtitle">Ingresa con tus credenciales de Power Code.</p>
 
+        <div id="modalForgot" class="modal">
+  <div class="modal-content">
+    <h2>Recuperar contraseña</h2>
+    <p>Ingresa tu correo y te enviaremos un enlace.</p>
+
+    <input type="email" id="forgotEmail" placeholder="tucorreo@ejemplo.com">
+
+    <div class="modal-actions">
+      <button id="sendRecovery" class="btn primary">Enviar</button>
+      <button id="closeModal" class="btn">Cancelar</button>
+    </div>
+  </div>
+</div>
+
         <div class="field-group">
           <label for="correo">Correo electronico</label>
           <input type="email" name="correo" id="correo" placeholder="tucorreo@ejemplo.com" required>
@@ -66,7 +80,7 @@
             <input type="checkbox" name="remember">
             <span>Recordar sesion</span>
           </label>
-          <a href="#" class="auth-link">Olvidaste tu contrasena?</a>
+          <a href="#" class="auth-link" id="forgotPassword">Olvidaste tu contrasena?</a>
         </div>
 
         <button type="submit" class="btn primary auth-btn">ENTRAR</button>
@@ -123,6 +137,7 @@
             <span>Acepto los terminos y la politica de privacidad</span>
           </label>
         </div>
+        
 
         <button type="submit" class="btn primary auth-btn">CREAR CUENTA</button>
 
@@ -134,7 +149,7 @@
     </section>
   </main>
 
-  <a class="wa" aria-label="WhatsApp" href="https://wa.me/5215555555" target="_blank" rel="noopener">?</a>
+<div id="toast"></div>
 
   <script src="../js/login.js"></script>
 </body>

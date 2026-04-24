@@ -54,6 +54,41 @@ router.get("/asistencias/:id_usuario", async (req, res) => {
   }
 });
 
+router.post("/asistencias", async (req, res) => {
+  const { id_usuario } = req.body;
+
+  if (!id_usuario) {
+    return res.status(400).json({ message: "El usuario es obligatorio" });
+  }
+
+  try {
+    const [clientes] = await db.query(
+      "SELECT id_cliente FROM clientes WHERE id_usuario = ? LIMIT 1",
+      [id_usuario]
+    );
+
+    if (clientes.length === 0) {
+      return res.status(404).json({ message: "No existe perfil de cliente para este usuario" });
+    }
+
+    const idCliente = clientes[0].id_cliente;
+
+    await db.query(
+      "INSERT INTO asistencias (id_cliente, fecha) VALUES (?, CURDATE())",
+      [idCliente]
+    );
+
+    res.status(201).json({ message: "Asistencia registrada correctamente" });
+  } catch (error) {
+    if (error.code === "ER_DUP_ENTRY") {
+      return res.status(409).json({ message: "Ya registraste tu asistencia de hoy" });
+    }
+
+    console.error(error);
+    res.status(500).json({ message: "Error al registrar asistencia" });
+  }
+});
+
 router.get("/pagos/:id_usuario", async (req, res) => {
   try {
     const [pagos] = await db.query(`
