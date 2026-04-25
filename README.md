@@ -110,7 +110,6 @@ Servicios Complementarios (Correo)
 
 #   Estructura del Proyecto
 
-# Estructura del Proyecto
 
 ```text
 POWERCODE_APPWEB/
@@ -216,6 +215,11 @@ Se realizaron pruebas funcionales mediante Jira para validar:
 
 [Ver documentación de Testing](docs/testing.md)
 
+También se incluye plan de pruebas y casos documentados.
+
+[Ver plan de pruebas](tests/plandepruebas.md)  
+[Ver casos de prueba](tests/casosdeprueba.md)
+
 ---
 
 ## Seguimiento de pruebas
@@ -225,6 +229,7 @@ Se utilizó Jira para administrar casos de prueba, ejecución de resultados y se
 Se documentaron 10 casos de prueba funcionales con resultados PASS/FAIL.
 
 [Ver tablero Jira](https://utxicotepec-team-e4fi7j91.atlassian.net/jira/software/c/projects/ALAN/list)
+
 ---
 
 # Análisis del Sistema
