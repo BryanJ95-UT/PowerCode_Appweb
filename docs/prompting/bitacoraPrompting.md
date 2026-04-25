@@ -1,4 +1,4 @@
-# Bitácora de Uso Responsable de IA Generativa
+# Bitácora de Uso Responsable de IA 
 
 ## Proyecto: Power Code
 
