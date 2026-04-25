@@ -111,22 +111,18 @@ Servicios Complementarios (Correo)
 #   Estructura del Proyecto
 
 
-```text
-POWERCODE_APPWEB/
+```POWERCODE_APPWEB/
 │ README.md
 │
 ├── api/
-│   └── own/
-│       └── endpoints.md
+│   ├── own/
+│   │   └── endpoints.md
+│   └── integrations/
+│       └── integraciones.md
 │
 ├── backend/
 │   ├── config/
 │   ├── routes/
-│   ├── .env.example
-│   ├── avance-sistema.sql
-│   ├── confirmacion-cuenta.sql
-│   ├── package-lock.json
-│   ├── package.json
 │   └── server.js
 │
 ├── frontend/
@@ -138,15 +134,16 @@ POWERCODE_APPWEB/
 │
 ├── docs/
 │   ├── contexto/
-│   ├── uiux/
 │   ├── img/
-│   ├── testing.md
-│   └── iaResponsiva.md
+│   ├── prompting/
+│   │   └── bitacoraPrompting.md
+│   ├── presentation/
+│   │   └── presentacionPowerCode.pptx
+│   ├── uiux/
+│   ├── iaResponsiva.md
+│   └── testing.md
 │
 └── tests/
-    ├── plandepruebas.md
-    ├── casosdeprueba.md
-    └── PruebasJira.png
 ```
 
 ---
@@ -197,6 +194,16 @@ Se utilizaron herramientas de IA como apoyo para:
 - Organización del proyecto
 
 [Ver documentación de IA Responsiva](docs/iaResponsiva.md)
+
+[Ver bitácora de prompting](docs/prompting/bitacoraPrompting.md)
+
+---
+
+# APIs de Terceros
+
+Power Code integra servicios externos para mapas, pagos y contenido multimedia.
+
+[Ver documentación de APIs externas](api/integrations/integraciones.md)
 
 ---
 
@@ -266,6 +273,14 @@ Proyecto desarrollado por el equipo **Power Code**:
 #  Estado del Proyecto
 
 Versión Web funcional en mejora continua.
+
+---
+
+# Presentación del Proyecto
+
+Presentacion archivo Power Code:
+
+[Descargar presentación Power Code](docs/presentation/presentacionPowerCode.pptx)
 
 ---
 

@@ -80,6 +80,22 @@ Clientes asignados a un entrenador.
 
 Actualizar datos del cliente.
 
+## PUT /api/clientes/:id_cliente
+
+Actualiza completamente la información del cliente.
+
+Body:
+{
+"id_cliente": number,
+"telefono": "string",
+"direccion": "string",
+"estado_membresia": "activa"
+}
+
+## DELETE /api/clientes/:id_cliente
+
+Elimina un cliente mediante su ID.
+
 ---
 
 #  ENTRENADOR
