@@ -18,9 +18,9 @@ Power Code es una aplicación web desarrollada para optimizar la administración
 
 ---
 
-#   Vista General del Sistema
+# Vista General del Sistema
 
-# Diseño UI/UX
+## Diseño UI/UX
 
 La interfaz fue diseñada previamente en Figma mediante:
 
@@ -29,9 +29,7 @@ La interfaz fue diseñada previamente en Figma mediante:
 - Mockups
 - Prototipo Navegacional
 
-Ver documentación:
-
-docs/uiux/uiux.md
+[Ver documentación UI/UX](docs/uiux/uiux.md)
 
 ## Inicio de Sesión
 
@@ -119,38 +117,37 @@ POWERCODE_APPWEB/
 │ README.md
 │
 ├── api/
-│   ├── own/
-│   └── endpoints/
+│   └── own/
+│       └── endpoints.md
 │
 ├── backend/
 │   ├── config/
 │   ├── routes/
-│   ├── .env.example/
-│   ├── avance-sistema.sql/ 
-    ├── confirmacion-cuenta.sql/
-    ├── package-lock.json/
-│   ├── server.js
-│   └── package.json
+│   ├── .env.example
+│   ├── avance-sistema.sql
+│   ├── confirmacion-cuenta.sql
+│   ├── package-lock.json
+│   ├── package.json
+│   └── server.js
 │
 ├── frontend/
-│   ├── index.html
-│   ├── login.html
-│   ├── register.html
-│   ├── dashboard.html
-│   ├── payments.html
-│   ├── memberships.html
 │   ├── css/
 │   ├── js/
-│   └── img/
+│   ├── img/
+│   ├── pages/
+│   └── index.html
 │
-└── docs/
-    ├── contexto/
-    │   └── requerimientos.md
-    ├── uiux/
-    │   └── uiux.md
-    ├── img/
-    ├── testing.md
-    └── ia-responsiva.md
+├── docs/
+│   ├── contexto/
+│   ├── uiux/
+│   ├── img/
+│   ├── testing.md
+│   └── iaResponsiva.md
+│
+└── tests/
+    ├── plandepruebas.md
+    ├── casosdeprueba.md
+    └── PruebasJira.png
 ```
 
 ---
@@ -200,9 +197,7 @@ Se utilizaron herramientas de IA como apoyo para:
 - Mejora documental
 - Organización del proyecto
 
-Ver documentación:
-
-docs/iaResponsiva.md
+[Ver documentación de IA Responsiva](docs/iaResponsiva.md)
 
 ---
 
@@ -219,17 +214,24 @@ Se realizaron pruebas funcionales mediante Jira para validar:
 
 ![Pruebas Jira](docs/img/PruebasJira.png)
 
-Documentación completa:
+[Ver documentación de Testing](docs/testing.md)
 
-docs/testing.md
+---
 
+## Seguimiento de pruebas
+
+Se utilizó Jira para administrar casos de prueba, ejecución de resultados y seguimiento de incidencias.
+
+Se documentaron 10 casos de prueba funcionales con resultados PASS/FAIL.
+
+[Ver tablero Jira](https://utxicotepec-team-e4fi7j91.atlassian.net/jira/software/c/projects/ALAN)
 ---
 
 # Análisis del Sistema
 
 Requerimientos funcionales, no funcionales, reglas de negocio e historias de usuario disponibles en:
 
-docs/contexto/requerimientos.md
+[Ver análisis del sistema](docs/contexto/requerimientos.md)
 
 ---
 
@@ -244,13 +246,15 @@ El proyecto cuenta con documentación técnica relacionada con:
 
 ---
 
-#   Equipo de Desarrollo
+# Equipo de Desarrollo
 
-Proyecto desarrollado por el equipo **Power Code**.
-   -Bryan Javier Gonzales Paredes
-   -Emigdio Yait Aguirre Martinez
-   -Alan Cruz Baltazar
-   -Angel Nazul Gutierrez Cruz
+Proyecto desarrollado por el equipo **Power Code**:
+
+- Bryan Javier Gonzales Paredes
+- Emigdio Yait Aguirre Martinez
+- Alan Cruz Baltazar
+- Angel Nazul Gutierrez Cruz
+
 
 ---
 
