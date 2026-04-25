@@ -1,125 +1,169 @@
-# DISEÑO DE INTERFAZ (UI/UX)
+# Diseño de Interfaz UI/UX - Power Code
 
-## Proyecto: Power Code
+## Herramienta Utilizada
 
-## 1. Objetivo del Diseño
+Figma
 
-Diseñar una interfaz moderna, intuitiva y responsiva que permita a administradores, entrenadores y clientes interactuar fácilmente con el sistema Power Code.
+## Enlace del Prototipo
 
-La navegación fue pensada para facilitar tareas como registro, inicio de sesión, consulta de rutinas, pagos, reportes y administración general.
-
----
-
-# 2. Sketches
-
-Se realizaron bocetos iniciales para definir distribución general de pantallas:
-
-* Landing page principal
-* Pantalla de login
-* Registro de usuarios
-* Dashboard administrador
-* Panel entrenador
-* Vista cliente
-
-Estos bocetos permitieron planear estructura antes del desarrollo.
+https://www.figma.com/design/JdlFKp5sU650dMylMEdRMx/APP-WEB?node-id=1-3&p=f&t=IoH0RT4EMAsFs90M-0
 
 ---
 
-# 3. Wireframes
+# Objetivo del Diseño
 
-Se elaboraron wireframes de baja fidelidad para definir:
+Diseñar una interfaz moderna, intuitiva, funcional y responsiva para la plataforma Power Code, enfocada en la administración de gimnasios, clientes, pagos, rutinas deportivas y reportes generales.
 
-* Menú lateral
-* Navbar superior
-* Tarjetas de información
-* Formularios
-* Tablas CRUD
-* Navegación entre módulos
+El diseño busca facilitar la navegación entre módulos y mejorar la experiencia del usuario final.
 
 ---
 
-# 4. Mockups
+# Identidad Visual
 
-Se desarrollaron mockups de alta fidelidad con estilo moderno:
+## Colores Corporativos
 
-* Paleta oscura con color naranja corporativo
-* Botones estilizados
-* Diseño tipo dashboard
-* Tarjetas estadísticas
-* Tablas administrativas
-* Formularios visuales
+- Negro
+- Gris oscuro
+- Naranja corporativo
+- Blanco
 
----
+## Estilo Visual
 
-# 5. Prototipo Navegacional
-
-Se diseñó flujo navegacional entre pantallas:
-
-Landing Page
-↓
-Login / Registro
-↓
-Dashboard según rol
-
-### Cliente:
-
-Dashboard → Rutinas → Dietas → Pagos → Reportes
-
-### Entrenador:
-
-Dashboard → Clientes → Rutinas → Dietas → Agenda
-
-### Administrador:
-
-Dashboard → Usuarios → Clientes → Reportes → Estadísticas
+- Diseño tipo dashboard moderno
+- Tarjetas informativas
+- Menú lateral administrativo
+- Botones llamativos
+- Formularios limpios y ordenados
 
 ---
 
-# 6. Principios UX Aplicados
+# Etapas de Diseño Desarrolladas
 
-### Simplicidad
+## 1. Sketches
 
-Interfaz limpia y clara.
+Se realizaron bocetos iniciales para definir distribución general de pantallas, navegación y estructura básica del sistema.
 
-### Consistencia
-
-Uso uniforme de colores, botones y menús.
-
-### Retroalimentación
-
-Mensajes visuales en registros, errores y acciones.
-
-### Accesibilidad
-
-Diseño adaptable a distintos dispositivos.
-
-### Rapidez
-
-Acceso directo a módulos principales.
+![Sketches](../img/sketches.png)
 
 ---
 
-# 7. Diseño Responsivo
+## 2. Wireframes
 
-El sistema fue adaptado para:
+Diseño estructural en baja fidelidad para validar espacios, menús y formularios antes del diseño final.
 
-* Computadora
-* Tablet
-* Teléfono móvil
+### Wireframe Login
 
----
+![Wireframe Login](../img/wireframe-login.png)
 
-# 8. Herramienta Utilizada
+### Wireframe Dashboard
 
-Figma para prototipado y planeación visual.
+![Wireframe Dashboard](../img/wireframe-dashboard.png)
 
 ---
 
-# 9. Evidencias
+## 3. Mockups Finales
 
-Se anexan capturas de:
+Diseño visual definitivo respetando identidad Power Code y experiencia moderna.
 
-* Sketches
-* Wireframes
-* Mockups
-* Prototipo interactivo
+### Mockup Login
+
+![Mockup Login](../img/mockup-login.png)
+
+### Mockup Dashboard
+
+![Mockup Dashboard](../img/mockup-dashboard.png)
+
+![Mockup Dashboard 2](../img/mockup-dashboard2.png)
+
+---
+
+## 4. Prototipo Navegacional
+
+Se desarrolló un flujo interactivo entre pantallas principales del sistema.
+
+Landing Page → Login → Dashboard → Pagos → Rutinas → Reportes
+
+![Prototipo](../img/prototipo.png)
+
+---
+
+# Pantallas Diseñadas
+
+- Landing Page
+- Inicio de Sesión
+- Registro de Usuario
+- Recuperación de Contraseña
+- Dashboard General
+- Gestión de Clientes
+- Gestión de Pagos
+- Membresías
+- Rutinas
+- Panel de Entrenador
+- Reportes
+
+---
+
+# Diseño Responsivo
+
+La interfaz fue adaptada para distintos dispositivos:
+
+- Computadora de escritorio
+- Laptop
+- Tablet
+- Teléfono móvil
+
+Se implementó mediante Media Queries en CSS para garantizar correcta visualización.
+
+---
+
+# Relación entre Figma y Frontend Desarrollado
+
+Los diseños creados en Figma fueron utilizados como base directa del frontend implementado en HTML, CSS y JavaScript.
+
+Se respetaron elementos como:
+
+- Distribución visual
+- Colores institucionales
+- Navegación lateral
+- Formularios
+- Dashboard administrativo
+- Botones y tarjetas visuales
+
+---
+
+# Principios UX Aplicados
+
+## Simplicidad
+
+Interfaz limpia y fácil de entender.
+
+## Consistencia
+
+Uso uniforme de estilos, botones y menús.
+
+## Rapidez
+
+Acceso rápido a módulos importantes.
+
+## Retroalimentación
+
+Mensajes visuales en acciones, errores y registros.
+
+## Accesibilidad
+
+Diseño adaptable y entendible para diferentes usuarios.
+
+---
+
+# Beneficios del Diseño Previo
+
+- Reducción de errores en desarrollo
+- Mejor organización visual
+- Planeación anticipada del sistema
+- Mejor experiencia para usuarios finales
+
+---
+
+# Conclusión
+
+El proceso UI/UX permitió visualizar y estructurar Power Code antes de programarlo, logrando una plataforma moderna, organizada y funcional. El uso de Figma facilitó la conexión entre diseño y desarrollo frontend real.
