@@ -54,4 +54,4 @@ Jira Software
 
 ## Tablero del Proyecto
 
-[Acceder a Jira](https://utxicotepec-team-e4fi7j91.atlassian.net/jira/software/c/projects/ALAN)
+[Acceder a Jira](https://utxicotepec-team-e4fi7j91.atlassian.net/jira/software/c/projects/ALAN/list)

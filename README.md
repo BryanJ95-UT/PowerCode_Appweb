@@ -224,7 +224,7 @@ Se utilizó Jira para administrar casos de prueba, ejecución de resultados y se
 
 Se documentaron 10 casos de prueba funcionales con resultados PASS/FAIL.
 
-[Ver tablero Jira](https://utxicotepec-team-e4fi7j91.atlassian.net/jira/software/c/projects/ALAN)
+[Ver tablero Jira](https://utxicotepec-team-e4fi7j91.atlassian.net/jira/software/c/projects/ALAN/list)
 ---
 
 # Análisis del Sistema
